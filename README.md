@@ -2,8 +2,14 @@
 
 Just enter Make to build the liber and write this to create your lib base :
 
+**For bashrc use 'bashrc' rule** :
 ```
-make
+make bashrc
+```
+
+**For zshrc use 'zshrc' rule** :
+```
+make zshrc
 ```
 
 Or you to add this alias line to your bashrc / zshrc:
