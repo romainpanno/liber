@@ -12,18 +12,13 @@ make bashrc
 make zshrc
 ```
 
-**For UPDATE**
-```
-make udpate
-```
-
 Or you to add this alias line to your bashrc / zshrc:
 
 ```
 alias liber="bash /home/romain/bashfunc/init_repo/init_repo.sh"
 ```
 
-create your repository with :
+This function will create your repository with :
   - Makefile,
   - src/      :
                 - main.c
@@ -32,3 +27,7 @@ create your repository with :
   - tests/    :
                 - tests.c
   
+**For UPDATE**
+```
+make udpate
+```
