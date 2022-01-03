@@ -11,4 +11,4 @@ COMPILATION = $(shell bash write_bash.sh)
 
 all :
 	$(COMPILATION)
-	@echo "\e[6mInit of repo done ✔\e0"
+	@echo "Init of repo done ✔"
