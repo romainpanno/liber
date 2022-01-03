@@ -30,7 +30,6 @@ fclean : clean
 clean:
 	rm -f *~
 	rm -f $(OBJ)
-	rm -f $(COMPILATION)
 	rm -f 'a.out'
 	rm -f *.gcno
 	rm -f *.gcda
