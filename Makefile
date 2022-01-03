@@ -9,22 +9,33 @@ TARGET = ~/.liber/
 
 PULL = $(shell git pull)
 
-CURR_SHELL := bashrc
-
 SH_INIT_REPO := $(TARGET)init_repo.sh
+
+THIS_SHELL := $(notdir $(shell env | grep SHELL | cut -d= -f2))
 
 # ---------------------------------------------------------------------
 
-all : update bashrc
+ifndef CURR_SHELL
+ifeq ($(THIS_SHELL), zsh)
+	CURR_SHELL := zshrc
+else ifeq ($(THIS_SHELL), bashrc)
+	CURR_SHELL := bashrc
+else
+	CURR_SHELL := bashrc
+endif
+endif
 
-bashrc: CURR_SHELL = bashrc
-bashrc: copy_src
+# ---------------------------------------------------------------------
+
+all : update copy_src
+	@$(MAKE) $(CURR_SHELL) CURR_SHELL=$(CURR_SHELL) -s
+
+bashrc:
 	@echo 'alias liber="bash $(SH_INIT_REPO)"' >> ~/.$(CURR_SHELL)
 	@$(MAKE) print_shell_init CURR_SHELL=$(CURR_SHELL) -s
 
-zshrc: CURR_SHELL = zshrc
-zshrc: copy_src
-	@shell echo 'alias liber="bash $(SH_INIT_REPO)"' >> ~/.$(CURR_SHELL)
+zshrc:
+	@echo 'alias liber="bash $(SH_INIT_REPO)"' >> ~/.$(CURR_SHELL)
 	@$(MAKE) print_shell_init CURR_SHELL=$(CURR_SHELL) -s
 
 print_shell_init:
