@@ -6,8 +6,10 @@
 ## init_repo
 ##
 
-if (-f ~/.zshrc); then
-    echo 'alias liber="bash /home/romain/bashfunc/init_repo/init_repo.sh"' >> ~/.zshrc
+echo 'cp liber/ ~/'
+
+if [ -f ~/.zshrc]; then
+    echo 'alias liber="bash ~/liber/liber/init_repo.sh"' >> ~/.zshrc
 else
-    echo 'alias liber="bash /home/romain/bashfunc/init_repo/init_repo.sh"' >> ~/.bashrc
+    echo 'alias liber="bash ~/liber/liber/init_repo.sh"' >> ~/.bashrc
 fi
