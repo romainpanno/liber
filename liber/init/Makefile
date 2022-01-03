@@ -5,24 +5,50 @@
 ## makefile that gcc
 ##
 
-COMPILATION = project_name
+COMPILATION = navy
 
-SRC 	=	src/main.c
+SRC 	=	src/check_touch.c					\
+			src/communication.c					\
+			src/handling_sigaction.c			\
+			src/init_users.c					\
+			src/manage_settings.c				\
+			src/manage_sigaction.c				\
+			src/navy_main.c						\
+			src/boats/config_boat.c				\
+			src/boats/detect_error_functions.c	\
+			src/boats/free_functions.c			\
+			src/boats/functions_create.c		\
+			src/boats/init_map.c				\
+			src/boats/print_map_functions.c		\
+			src/lib/get_line.c					\
+			src/lib/my_atoi.c					\
+			src/lib/my_put_nbr.c				\
+			src/lib/my_putchar.c				\
+			src/lib/my_strlen.c
 
-SRC_TEST	=	
+SRC_TEST	=	$(filter-out main.c,$(SRC))
+
+RETRY	=	retry.c
 
 TEST	=	tests/tests.c
 
 CFLAGS	=	-Wall -Wextra -Wpedantic -I./include/
 
+CC = gcc
+
 # ---------------------------------------------------------------------
 
 OBJ = $(SRC:.c=.o)
 
-$(COMPILATION): $(OBJ)
-	gcc -o $(COMPILATION) $(OBJ)
+%.o:		%.c
+	@$(CC) -c -o $@ $< $(CFLAGS)
+	@printf "[\033[0;32mcompiled\033[0m] % 29s\n" $< |  tr ' ' '.'
 
-all : $(COMPILATION)
+EXECUTABLE: $(OBJ)
+	@$(CC) $(SRC) -o $(COMPILATION) $(CFLAGS)
+	@printf "[\033[0;36mbuilt\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
+
+all : EXECUTABLE
 
 fclean : clean
 	rm -f $(OBJ) $(COMPILATION)
