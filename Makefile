@@ -5,10 +5,18 @@
 ## makefile that gcc
 ##
 
-COMPILATION = $(shell bash write_bash.sh && cp -r liber/ ~/)
+BASHRC = $(shell bash write_bash.sh && cp -r liber/ ~/)
+
+ZSHRC = $(shell bash write_zsh.sh && cp -r liber/ ~/)
 
 # ---------------------------------------------------------------------
 
-all :
-	$(COMPILATION)
+bashrc:
+	$(BASHRC)
 	@echo "Init of repo done ✔"
+
+zshrc:
+	$(ZSHRC)
+	@echo "Init of repo done ✔"
+
+all : bashrc
