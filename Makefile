@@ -5,18 +5,22 @@
 ## makefile that gcc
 ##
 
-BASHRC = $(shell bash write_bash.sh && cp -r liber/ ~/ && echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.zshrc)
+CP = $(shell cp -r liber/ ~/)
 
-ZSHRC = $(shell bash write_zsh.sh && cp -r liber/ ~/ && echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.bashrc)
+BASHRC = $(shell echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.bashrc)
+
+ZSHRC = $(shell echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.zshrc)
 
 # ---------------------------------------------------------------------
 
 bashrc:
 	$(BASHRC)
+	$(CP)
 	@echo "Init of repo with bashrc rule done ✔"
 
 zshrc:
 	$(ZSHRC)
+	$(CP)
 	@echo "Init of repo with zshrcrule done ✔"
 
 all : bashrc
