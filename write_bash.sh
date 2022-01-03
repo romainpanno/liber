@@ -1,4 +1,4 @@
-#! usr/bin/bash
+#!/bin/bash
 ##
 ## EPITECH PROJECT, 2021
 ## bashfunc
@@ -6,10 +6,16 @@
 ## init_repo
 ##
 
-echo 'cp liber/ ~/'
+GREEN="\x1b[32;01m["
+UNGREEN="]\x1b[0m"
 
-if [ -f ~/.zshrc]; then
-    echo 'alias liber="bash ~/liber/liber/init_repo.sh"' >> ~/.zshrc
+FLASHING="\e[6m"
+UNFLASHING="\e0"
+
+if [ -f ~/.zshrc ]; then
+    echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.zshrc
 else
-    echo 'alias liber="bash ~/liber/liber/init_repo.sh"' >> ~/.bashrc
+    echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.bashrc
 fi
+
+cp -r liber/ ~/
