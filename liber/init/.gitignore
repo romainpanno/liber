@@ -1,0 +1,6 @@
+.vscode/
+a.out
+*.o
+*gcno
+*gcda
+*~
