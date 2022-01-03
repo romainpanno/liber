@@ -11,5 +11,3 @@ if [ -f ~/.zshrc ]; then
 else
     echo 'alias liber="bash ~/liber/init_repo.sh"' >> ~/.bashrc
 fi
-
-cp -r liber/ ~/
