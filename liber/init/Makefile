@@ -7,24 +7,7 @@
 
 COMPILATION = project_name
 
-SRC 	=	src/check_touch.c					\
-			src/communication.c					\
-			src/handling_sigaction.c			\
-			src/init_users.c					\
-			src/manage_settings.c				\
-			src/manage_sigaction.c				\
-			src/navy_main.c						\
-			src/boats/config_boat.c				\
-			src/boats/detect_error_functions.c	\
-			src/boats/free_functions.c			\
-			src/boats/functions_create.c		\
-			src/boats/init_map.c				\
-			src/boats/print_map_functions.c		\
-			src/lib/get_line.c					\
-			src/lib/my_atoi.c					\
-			src/lib/my_put_nbr.c				\
-			src/lib/my_putchar.c				\
-			src/lib/my_strlen.c
+SRC 	=	src/main.c
 
 SRC_TEST	=	$(filter-out main.c,$(SRC))
 
