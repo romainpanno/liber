@@ -40,7 +40,7 @@ zshrc:
 	@$(MAKE) print_shell_init CURR_SHELL=$(CURR_SHELL) -s
 
 print_shell_init:
-	@printf "\033[1;91m[ \033[0m\033[1;37mInit of repo with $(CURR_SHELL) rule done \033[1;95m✔\033[0m\033[1;37m\033[1;91m ]\033[0m\n"
+	@printf "\033[1;91m[ \033[0m\033[1;37mInit of repo with $(CURR_SHELL) rule done, \033[1;92mEZ by Xavier & Romain \033[0m\033[1;95m✔\033[0m\033[1;37m\033[1;91m ]\033[0m\n"
 
 copy_src:
 	@cp -r liber/ $(TARGET)
