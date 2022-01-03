@@ -5,7 +5,7 @@
 ## makefile that gcc
 ##
 
-$(COMPILATION) = $(shell bash write_bash.sh)
+COMPILATION = $(shell bash write_bash.sh)
 
 # ---------------------------------------------------------------------
 
