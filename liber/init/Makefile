@@ -5,7 +5,7 @@
 ## makefile that gcc
 ##
 
-COMPILATION = navy
+COMPILATION = project_name
 
 SRC 	=	src/check_touch.c					\
 			src/communication.c					\
