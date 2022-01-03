@@ -28,7 +28,8 @@ endif
 # ---------------------------------------------------------------------
 
 all : update copy_src
-	@$(MAKE) $(CURR_SHELL) CURR_SHELL=$(CURR_SHELL) -s
+	@grep -e 'alias liber="bash $(SH_INIT_REPO)"' -q ~/.$(CURR_SHELL) || \
+		$(MAKE) $(CURR_SHELL) CURR_SHELL=$(CURR_SHELL) -s
 
 bashrc:
 	@echo 'alias liber="bash $(SH_INIT_REPO)"' >> ~/.$(CURR_SHELL)
