@@ -7,11 +7,9 @@
 
 COMPILATION = project_name
 
-SRC 	=	src/main.c
+SRC 	=	src/project_main.c
 
 SRC_TEST	=	$(filter-out main.c,$(SRC))
-
-RETRY	=	retry.c
 
 TEST	=	tests/tests.c
 
@@ -49,6 +47,7 @@ clean:
 
 re: fclean all
 
+debug: CFLAGS += -g3
 debug:	fclean $(OBJ)
 	gcc -o $(COMPILATION) $(OBJ) $(INCLUDE) -g3
 
