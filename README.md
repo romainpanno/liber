@@ -1,27 +1,22 @@
 # LIBER
 
-Just enter Make to build the liber and write this to create your lib base :
+Just enter _Make_ in order to build liber and add rule to your bashrc or zsh:
 
-**For bashrc use 'bashrc' rule** :
+**Enter** :
 ```
-make bashrc
-```
-
-**For zshrc use 'zshrc' rule** :
-```
-make zshrc
+make
 ```
 
-Or you to add this alias line to your bashrc / zshrc:
+Or you can add this alias line to your bashrc / zshrc and cpoy liber folder _.liber_:
 
 ```
-alias liber="bash /home/romain/bashfunc/init_repo/init_repo.sh"
+alias liber="bash $HOME/.liber/"
 ```
 
 This function will create your repository with :
   - Makefile,
   - src/      :
-                - main.c
+                - project_main.c
   - include/  :
                 - my.h
   - tests/    :
