@@ -47,8 +47,9 @@ unknow:
 	@echo
 
 copy_src:
-	@rm -r $(TARGET)
+	@rm -rf $(TARGET)
 	@cp -r liber/ $(shell env | grep -e '^HOME=' | cut -d= -f2)
+	@mv $(shell env | grep -e '^HOME=' | cut -d= -f2)/liber $(TARGET)
 
 update:
 	@printf "\033[1;91mUpdating...\033[0m\n"
