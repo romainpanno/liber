@@ -26,6 +26,6 @@ UNBOLD="\033[0m"
 
 echo -e "$GREEN Copy starting $UNGREEN"
 echo -e "$RED Pending $UNRED$MAGENTA$DIM"
-cp -vr ~/.liber/init/* $(pwd)
-cp -v ~/.liber/init/.gitignore $(pwd)
+cp -vru ~/.liber/init/* $(pwd)
+cp -vu ~/.liber/init/.gitignore $(pwd)
 echo -e "$FLASHING$UNMAGENTA$UNDIM$BOLD$GREEN Copy finish ! $UNGREEN$UNBOLD$UNFLASHING"
