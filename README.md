@@ -10,7 +10,7 @@ make
 Or you can add this alias line to your bashrc / zshrc and cpoy liber folder _.liber_:
 
 ```
-alias liber="bash $HOME/.liber/"
+alias liber="bash $HOME/.liber/init_repo.sh"
 ```
 
 This function will create your repository with :
