@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2022
+** tests
+** File description:
+** tests
+*/
+
 #include <criterion/criterion.h>
 #include "../include/my.h"
 #include <criterion/redirect.h>
