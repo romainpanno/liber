@@ -108,7 +108,6 @@ Update() {
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-Main-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-main() {
     if [ $3 ]; then
         Print_error
     elif [[ $1 ]] && [[ $2 ]]; then
@@ -139,6 +138,3 @@ main() {
         Copy_repo_classic
         Print_init_success
     fi
-}
-
-main
