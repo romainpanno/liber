@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** okey.c
+** $NAME.c
 ** File description:
 ** $DESCRIPTION
 */

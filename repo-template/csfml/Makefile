@@ -5,7 +5,7 @@
 ## makefile that gcc
 ##
 
-COMPILATION = okey
+COMPILATION = $NAME
 
 SRC 	=	src/main.c
 

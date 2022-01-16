@@ -6,12 +6,12 @@
 */
 
 #include <criterion/criterion.h>
-#include "../include/okey.h"
+#include "../include/$NAME.h"
 #include <criterion/redirect.h>
 
 Test(funcname, name, .init = cr_redirect_stdout)
 {
-    char *av[] = {"./okey", ""};
+    char *av[] = {"./$NAME", ""};
     int ac = 2;
     char *res = "";
 

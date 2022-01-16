@@ -14,7 +14,7 @@ vgcore*
 # Executable
 unit_tests
 a.out
-okey
+$NAME
 
 # Lib
 libmy.a
