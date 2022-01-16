@@ -125,7 +125,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLUE"
+        echo -en "to use project name): $BBLue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -142,7 +142,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLUE"
+        echo -en "to use project name): $BBLue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -165,7 +165,7 @@ elif [ $1 ]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLUE"
+        echo -en "to use project name): $BBLue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -182,7 +182,7 @@ elif [ $1 ]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLUE"
+        echo -en "to use project name): $BBLue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -204,7 +204,7 @@ else
     read NAME
     echo -en "$Color_Off"
     echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-    echo -en "to use project name): $BBLUE"
+    echo -en "to use project name): $BBLue"
     read DESCRIPTION
     echo -en "$Color_Off"
 
