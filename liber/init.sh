@@ -101,7 +101,7 @@ Init_LibPath() {
 #------------------------ Replace repository ------------------------
 Place_repository() {
     cd /tmp/
-    git clone "URLLLL"
+    git clone "https://github.com/romainpanno/liber"
     if [ -d /usr/share/liber ]; then
         sudo rm -r /usr/share/liber
     fi
