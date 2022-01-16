@@ -1,9 +1,14 @@
 #!/bin/bash
 
+VERSION=V1.1
+
 #export lib path variable
 source /etc/environment
 
 #----------------------------Variables-----------------------------
+
+#check version
+GitVersion=$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh | grep -e 'VERSION=' | cut -d= -f2 | head -qn1)
 
 #variable for lib path
 PATH_LIB=""
@@ -31,7 +36,8 @@ Display_title() {
 ▀╚██╔▀    ██║         ██║    ██╔══██╗    ██╔══╝      ██╔══██╗    ▀╚██╔▀
   ╚═╝     ███████╗    ██║    ██████╔╝    ███████╗    ██║  ██║      ╚═╝
           ╚══════╝    ╚═╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝
-                                                        By Romain Panno"
+                                                        By Romain Panno
+$BIGreen$VERSION"
     echo -e "$Color_Off"
 }
 
@@ -147,6 +153,14 @@ Print_error() {
     echo -e "$Color_Off"
 }
 
+Print_check_verion() {
+    if [[ $VERSION != $GitVersion ]]; then
+        echo -e "New update available : $BIGreen$GitVersion$Color_off"
+    else
+        echo -e "Liber is up to date !"
+    fi
+}
+
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Main -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 if [[ $EUID -ne 0 ]]; then
@@ -168,6 +182,7 @@ elif [[ $1 == "-l" || $1 == "--lib" ]]; then
 elif [[ $1 == "-h" || $1 == "--help" ]]; then
     Display_title
     Print_help
+    Print_check_verion
 elif [[ $1 ]]; then
     Display_title
     Print_error
@@ -176,4 +191,5 @@ else
     Init_LibPath
     Place_repository
     Print_init_success
+    Print_check_verion
 fi
