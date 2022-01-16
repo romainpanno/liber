@@ -140,34 +140,32 @@ Print_error() {
     echo -e "$Color_Off"
 }
 
-#------------------------- Check sudo -------------------------
-
-Check_sudo() {
-    if [[ $EUID -ne 0 ]]; then
-        echo -en "$BIRed"
-        echo -e "Password needed$Color_Off"
-        echo -e "The installation must be run as root."
-        sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
-        exit $?
-    fi
-}
-
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Main -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-Check_sudo
-Display_title
-if [ $2 ]; then
+if [[ $EUID -ne 0 ]]; then
+    echo -en "$BIRed"
+    echo -e "Password needed$Color_Off"
+    echo -e "The installation must be run as root."
+    sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
+    exit $?
+elif [ $2 ]; then
+    Display_title
     Print_error
 elif [[ $1 == "-u" || $1 == "--update" ]]; then
+        Display_title
         Place_repository
         Print_update_success
 elif [[ $1 == "-l" || $1 == "--lib" ]]; then
+        Display_title
         Init_LibPath
 elif [[ $1 == "-h" || $1 == "--help" ]]; then
+    Display_title
     Print_help
 elif [[ $1 ]]; then
+    Display_title
     Print_error
 else
+    Display_title
     Init_LibPath
     Place_repository
     Print_init_success
