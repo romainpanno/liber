@@ -1,11 +1,9 @@
 /*
 ** EPITECH PROJECT, 2021
-** project
+** $NAME.c
 ** File description:
-** main
+** $DESCRIPTION
 */
-
-#include "my.h"
 
 int main(int ac, char **av)
 {

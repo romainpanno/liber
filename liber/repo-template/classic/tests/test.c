@@ -1,17 +1,17 @@
 /*
 ** EPITECH PROJECT, 2022
-** tests
+** $NAME
 ** File description:
-** tests
+** $DESCRIPTION
 */
 
 #include <criterion/criterion.h>
-#include "../include/my.h"
+#include "../include/$NAME.h"
 #include <criterion/redirect.h>
 
 Test(funcname, name, .init = cr_redirect_stdout)
 {
-    char *av[] = {"./project_name", ""};
+    char *av[] = {"./$NAME", ""};
     int ac = 2;
     char *res = "";
 

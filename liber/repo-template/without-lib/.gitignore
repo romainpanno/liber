@@ -1,0 +1,21 @@
+# vscode
+.vscode/
+
+# Object
+*.o
+
+# Tests
+*gcno
+*gcda
+vgcore*
+
+# Useless
+*~
+
+# Executable
+unit_tests
+a.out
+$NAME
+
+# Lib
+libmy.a
