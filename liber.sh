@@ -111,7 +111,7 @@ Update() {
         echo -e "Password needed$Color_Off"
         echo -e "The installation must be run as root."
     fi
-    sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
+    sudo bash /usr/share/liber/init.sh -u
 }
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-Main-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
