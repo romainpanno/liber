@@ -103,7 +103,6 @@ Place_repository() {
     cd /tmp/
     git clone "https://github.com/romainpanno/liber"
     if [ -d /usr/share/liber ]; then
-        echo "ca rm"
         sudo rm -r /usr/share/liber
     fi
     if [ -f /usr/local/bin/liber ]; then

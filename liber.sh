@@ -28,22 +28,6 @@ On_IWhite='\033[0;107m'
 #Check symbol
 Check_symbol="\e[5m✔\e[25m"
 
-#----------------------------User Input----------------------------
-
-User_input() {
-    echo -en "Enter your project name: $BBlue"
-    read NAME
-    echo -en "$Color_Off"
-    echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-    echo -en "to use project name): $BBLUE"
-    read DESCRIPTION
-    echo -en "$Color_Off"
-
-    if [ -z "$DESCRIPTION" ]; then
-        DESCRIPTION=$NAME
-    fi
-}
-
 #-------------------Init files to the repository-------------------
 
 #copy repo
@@ -135,18 +119,54 @@ elif [ $1 ]; then
     if [[ $1 == "-u" ]]; then
         Update
     elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
-        User_input
+        #user input
+        echo -en "Enter your project name: $BBlue"
+        read NAME
+        echo -en "$Color_Off"
+        echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+        echo -en "to use project name): $BBLUE"
+        read DESCRIPTION
+        echo -en "$Color_Off"
+
+        if [ -z "$DESCRIPTION" ]; then
+            DESCRIPTION=$NAME
+        fi
+        #end user input
         Copy_repo_classic_without_lib
         Print_init_success
     elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
-        User_input
+        #user input
+        echo -en "Enter your project name: $BBlue"
+        read NAME
+        echo -en "$Color_Off"
+        echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+        echo -en "to use project name): $BBLUE"
+        read DESCRIPTION
+        echo -en "$Color_Off"
+
+        if [ -z "$DESCRIPTION" ]; then
+            DESCRIPTION=$NAME
+        fi
+        #end user input
         Copy_repo_csfml
         Print_init_success
     else
         Print_error
     fi
 else
-    User_input
+    #user input
+    echo -en "Enter your project name: $BBlue"
+    read NAME
+    echo -en "$Color_Off"
+    echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+    echo -en "to use project name): $BBLUE"
+    read DESCRIPTION
+    echo -en "$Color_Off"
+
+    if [ -z "$DESCRIPTION" ]; then
+        DESCRIPTION=$NAME
+    fi
+    #end user input
     Copy_repo_classic
     Print_init_success
 fi
