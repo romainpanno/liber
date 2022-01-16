@@ -42,37 +42,27 @@ Init_LibPath() {
     echo -en "$Color_Off$BIWhite"
     read PATH_LIB
     echo -en "$Color_Off"
-    if [ -n "$PATH_LIB" ]; then
-        echo -en "$BIBlue"
-        echo -en "are you shure ? y/n: "
-        echo -en "$Color_Off$BIWhite"
-        read ARE_SHURE
-        echo -en "$Color_Off"
-    fi
 
-    while [[ -z "$PATH_LIB" ]] || [[ $ARE_SHURE == "n" ]]
+    while [[ ! -d "$PATH_LIB" ]] || [[ -z "$PATH_LIB" ]] || [[ $ARE_SHURE == "n" ]]
     do
-        if [ -z "$PATH_LIB" ]; then
-            echo -en "BAD input, retry: "
-            read PATH_LIB
-            echo -en "$BIBlue"
-            echo -en "are you shure ? y/n: "
-            echo -en "$Color_Off$BIWhite"
-            read ARE_SHURE
+        if [[ -z "$PATH_LIB" || ! -d "$PATH_LIB" ]]; then
+            echo -en "$BIRed"
+            echo -en "Wrong path retry: "
             echo -en "$Color_Off"
+            read PATH_LIB
         else
             echo -en "$BIBlue"
             echo -en "Enter your library path: "
             echo -en "$Color_Off$BIWhite"
             read PATH_LIB
             echo -en "$Color_Off"
-            if [ -n "$PATH_LIB" ]; then
-                echo -en "$BIBlue"
-                echo -en "are you shure ? y/n: "
-                echo -en "$Color_Off$BIWhite"
-                read ARE_SHURE
-                echo -en "$Color_Off"
-            fi
+        fi
+        if [ -d "$PATH_LIB" ]; then
+            echo -en "$BIBlue"
+            echo -en "are you shure ? y/n: "
+            echo -en "$Color_Off$BIWhite"
+            read ARE_SHURE
+            echo -en "$Color_Off"
         fi
     done
 
@@ -164,8 +154,8 @@ Check_sudo() {
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Main -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-Display_title
 Check_sudo
+Display_title
 if [ $2 ]; then
     Print_error
 elif [[ $1 == "-u" || $1 == "--update" ]]; then

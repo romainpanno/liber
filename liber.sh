@@ -190,8 +190,13 @@ elif [ $1 ]; then
             DESCRIPTION=$NAME
         fi
         #end user input
-        Copy_repo_csfml
-        Rewrite_files
+        if [ -f $LIB ]; then
+            Copy_repo_csfml
+            Rewrite_files
+        else
+            echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
+            Copy_repo_csfml_withou_lib
+        fi
         Print_init_success
     elif [[ $1 == "-h" || $1 == "--help" ]]; then
         Print_help
