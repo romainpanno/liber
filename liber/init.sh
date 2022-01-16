@@ -84,7 +84,7 @@ Init_LibPath() {
             rm tmp_liber
         fi
         sudo grep -v -e 'PATH_LIBER=' /etc/environment > /tmp/tmp_liber
-        if [ -f tmp_liber ]; then
+        if [ -f /tmp/tmp_liber ]; then
             sudo rm /etc/environment
             sudo mv /tmp/tmp_liber /etc/
             sudo mv /etc/tmp_liber /etc/environment
