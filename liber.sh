@@ -105,11 +105,35 @@ if [ $3 ]; then
     Print_error
 elif [[ $1 ]] && [[ $2 ]]; then
     if [[ $1 == "-wl" || $1 == "--without-lib" ]] && [[ $2 == "-g" || $2 == "--csfml" ]]; then
-        User_input
+        #user input
+        echo -en "Enter your project name: $BBlue"
+        read NAME
+        echo -en "$Color_Off"
+        echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+        echo -en "to use project name): $BBLUE"
+        read DESCRIPTION
+        echo -en "$Color_Off"
+
+        if [ -z "$DESCRIPTION" ]; then
+            DESCRIPTION=$NAME
+        fi
+        #end user input
         Copy_repo_csfml_withou_lib
         Print_init_success
     elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
-        User_input
+        #user input
+        echo -en "Enter your project name: $BBlue"
+        read NAME
+        echo -en "$Color_Off"
+        echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+        echo -en "to use project name): $BBLUE"
+        read DESCRIPTION
+        echo -en "$Color_Off"
+
+        if [ -z "$DESCRIPTION" ]; then
+            DESCRIPTION=$NAME
+        fi
+        #end user input
         Copy_repo_csfml_withou_lib
         Print_init_success
     else
