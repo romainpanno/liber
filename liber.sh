@@ -18,8 +18,11 @@ LIB=$PATH_LIBER
 Color_Off='\033[0m'
 
 BBlue='\033[1;34m'
+BIGreen='\033[1;92m'
+BIRed='\033[1;91m'
 
 BIBlue='\033[1;94m'
+
 
 BOLD="\033[1m"
 UNBOLD="\033[0m"
@@ -81,6 +84,16 @@ Print_init_success() {
     echo -e " $Check_symbol"
 }
 
+#---------------------------Help message---------------------------
+
+Print_help() {
+    echo -en "$BIGrenn"
+    echo -en "[ Help ]"
+    echo -e "$Color_Off"
+    echo -en "Use flag :\n\t- '-h' or '--help' for help\n\n\t- '-g' or '--csfml' for csfml repo\n\n\t"
+    echo -e "-'-wl' or '--without-lib' for repo without your lib\n\n\tYou can combine flags if you want"
+}
+
 #--------------------------Error message---------------------------
 
 Print_error() {
@@ -91,11 +104,12 @@ Print_error() {
 
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Root -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 Update() {
     if [[ $EUID -ne 0 ]]; then
         echo -e "\033[0;31mThe installation must be run as root."
         echo -e "\033[0;31mPlease enter your password:\033[0m"
-        sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/aureliancnx/Bubulle-Norminette/master/install_bubulle.sh)\"
+        sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)\"
         exit $?
     fi
 }
@@ -179,6 +193,8 @@ elif [ $1 ]; then
         Copy_repo_csfml
         Rewrite_files
         Print_init_success
+    elif [[ $1 == "-h" || $1 == "--help" ]]; then
+        Print_help
     else
         Print_error
     fi

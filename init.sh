@@ -146,13 +146,13 @@ Must_root() {
     if [[ $EUID -ne 0 ]]; then
         echo -e "\033[0;31mThe installation must be run as root."
         echo -e "\033[0;31mPlease enter your password:\033[0m"
-        sudo "$0" "sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/aureliancnx/Bubulle-Norminette/master/install_bubulle.sh)\""
+        sudo "$0" "sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)\""
         exit $?
     fi
 }
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Main -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-# Must_root
+Must_root
 Display_title
 if [ $2 ]; then
     Print_error
