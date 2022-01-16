@@ -98,7 +98,7 @@ Print_init_success() {
 
 Print_check_verion() {
     if [[ $VERSION != $GitVersion ]]; then
-        echo -e "New update available : $BIGreen$GitVersion$Color_off"
+        echo -e "New update available : $BIGreen$GitVersion$Color_Off"
     else
         echo -e "Liber is up to date !"
     fi
