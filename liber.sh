@@ -119,6 +119,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         fi
         #end user input
         Copy_repo_csfml_withou_lib
+        Rewrite_files
         Print_init_success
     elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
         #user input
@@ -135,6 +136,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         fi
         #end user input
         Copy_repo_csfml_withou_lib
+        Rewrite_files
         Print_init_success
     else
         Print_error
@@ -157,6 +159,7 @@ elif [ $1 ]; then
         fi
         #end user input
         Copy_repo_classic_without_lib
+        Rewrite_files
         Print_init_success
     elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
         #user input
@@ -173,6 +176,7 @@ elif [ $1 ]; then
         fi
         #end user input
         Copy_repo_csfml
+        Rewrite_files
         Print_init_success
     else
         Print_error
@@ -192,5 +196,6 @@ else
     fi
     #end user input
     Copy_repo_classic
+    Rewrite_files
     Print_init_success
 fi
