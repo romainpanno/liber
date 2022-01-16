@@ -1,9 +1,14 @@
 #!/bin/bash
 
+VERSION=$(grep -e 'VERSION=' /usr/share/liber/init.sh | cut -d= -f2 | head -qn1)
+
 #export lib path variable
 source /etc/environment
 
 #-----------------------------Variables----------------------------
+
+#check version
+GitVersion=$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh | grep -e 'VERSION=' | cut -d= -f2 | head -qn1)
 
 #Variables needed to edit template files
 NAME="project"
@@ -33,7 +38,7 @@ On_IWhite='\033[0;107m'
 #Check symbol
 Check_symbol="\e[5m✔\e[25m"
 
-#-------------------Init files to the repository-------------------
+#------------------- Init files to the repository -------------------
 
 #copy repo
 Copy_repo_classic() {
@@ -66,7 +71,7 @@ Copy_repo_classic_without_lib() {
     mv include/project.h include/$NAME.h
 }
 
-#---------------------------Rewrite files--------------------------
+#--------------------------- Rewrite files --------------------------
 
 Rewrite_files() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
@@ -80,7 +85,7 @@ Rewrite_files() {
     find . -type f -exec sed -i "s/\$HEADER_NAME/$HEADER_NAME/g" {} \;
 }
 
-#-------------------------Init successfull-------------------------
+#------------------------- Init successfull -------------------------
 
 Print_init_success() {
     echo -en "$On_IWhite$BIBlue"
@@ -89,7 +94,17 @@ Print_init_success() {
     echo -e " $Check_symbol"
 }
 
-#---------------------------Help message---------------------------
+#--------------------------- Check Version ---------------------------
+
+Print_check_verion() {
+    if [[ $VERSION != $GitVersion ]]; then
+        echo -e "New update available : $BIGreen$GitVersion$Color_off"
+    else
+        echo -e "Liber is up to date !"
+    fi
+}
+
+#--------------------------- Help message ---------------------------
 
 Print_help() {
     echo -en "$BIGrenn"
@@ -100,7 +115,7 @@ Print_help() {
     echo -e  "\t$UCyan--------- You can combine flags if you want ---------$Color_Off"
 }
 
-#--------------------------Error message---------------------------
+#-------------------------- Error message ---------------------------
 
 Print_error() {
     echo -en "$BIRed"
@@ -151,6 +166,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         Copy_repo_csfml_withou_lib
         Rewrite_files
         Print_init_success
+        Print_check_verion
     elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
@@ -168,6 +184,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         Copy_repo_csfml_withou_lib
         Rewrite_files
         Print_init_success
+        Print_check_verion
     else
         Print_error
     fi
@@ -191,6 +208,7 @@ elif [ $1 ]; then
         Copy_repo_classic_without_lib
         Rewrite_files
         Print_init_success
+        Print_check_verion
     elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
@@ -213,12 +231,14 @@ elif [ $1 ]; then
         fi
         Rewrite_files
         Print_init_success
+        Print_check_verion
     elif [[ $1 == '-l' || $1 == "--lib" ]]; then
         echo -en "\n$BIBlue"
         echo -e "Current path for lib:$Color_Off$BOLD $LIB\n$UNBOLD"
         Update_lib
     elif [[ $1 == "-h" || $1 == "--help" ]]; then
         Print_help
+        Print_check_verion
     else
         Print_error
     fi
@@ -244,4 +264,5 @@ else
     fi
     Rewrite_files
     Print_init_success
+    Print_check_verion
 fi
