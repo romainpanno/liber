@@ -37,6 +37,7 @@ Check_symbol="\e[5m✔\e[25m"
 
 #copy repo
 Copy_repo_classic() {
+    NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/classic/* $BASEDIR
     cp /usr/share/liber/repo-template/classic/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
@@ -44,6 +45,7 @@ Copy_repo_classic() {
 }
 
 Copy_repo_csfml() {
+    NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/csfml/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
@@ -51,12 +53,14 @@ Copy_repo_csfml() {
 }
 
 Copy_repo_csfml_withou_lib() {
+    NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/csfml-without-lib/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml-without-lib/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
 }
 
 Copy_repo_classic_without_lib() {
+    NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/without-lib/* $BASEDIR
     cp /usr/share/liber/repo-template/without-lib/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
