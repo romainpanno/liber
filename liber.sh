@@ -192,11 +192,11 @@ elif [ $1 ]; then
         #end user input
         if [ -f $LIB ]; then
             Copy_repo_csfml
-            Rewrite_files
         else
             echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
             Copy_repo_csfml_withou_lib
         fi
+        Rewrite_files
         Print_init_success
     elif [[ $1 == "-h" || $1 == "--help" ]]; then
         Print_help
@@ -217,7 +217,12 @@ else
         DESCRIPTION=$NAME
     fi
     #end user input
-    Copy_repo_classic
+    if [ -f $LIB ]; then
+        Copy_repo_classic
+    else
+        echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
+        Copy_repo_classic_without_lib
+    fi
     Rewrite_files
     Print_init_success
 fi
