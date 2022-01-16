@@ -125,7 +125,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLue"
+        echo -en "to use project name): $BBlue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -142,7 +142,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLue"
+        echo -en "to use project name): $BBlue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -165,7 +165,7 @@ elif [ $1 ]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLue"
+        echo -en "to use project name): $BBlue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -182,7 +182,7 @@ elif [ $1 ]; then
         read NAME
         echo -en "$Color_Off"
         echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBLue"
+        echo -en "to use project name): $BBlue"
         read DESCRIPTION
         echo -en "$Color_Off"
 
@@ -190,7 +190,7 @@ elif [ $1 ]; then
             DESCRIPTION=$NAME
         fi
         #end user input
-        if [ -f $LIB ]; then
+        if [ -d $LIB ]; then
             Copy_repo_csfml
         else
             echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
@@ -209,7 +209,7 @@ else
     read NAME
     echo -en "$Color_Off"
     echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-    echo -en "to use project name): $BBLue"
+    echo -en "to use project name): $BBlue"
     read DESCRIPTION
     echo -en "$Color_Off"
 
@@ -217,7 +217,7 @@ else
         DESCRIPTION=$NAME
     fi
     #end user input
-    if [ -f $LIB ]; then
+    if [ -d $LIB ]; then
         Copy_repo_classic
     else
         echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
