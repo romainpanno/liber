@@ -12,6 +12,7 @@ HEADER_NAME=$NAME
 
 #PWD
 BASEDIR=$(pwd)
+LIB=$PATH_LIBER
 
 #Colors:
 Color_Off='\033[0m'
@@ -35,14 +36,14 @@ Copy_repo_classic() {
     cp -r /usr/share/liber/repo-template/classic/* $BASEDIR
     cp /usr/share/liber/repo-template/classic/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
-    cp $PATH_LIBER $BASEDIR
+    cp $LIB $BASEDIR
 }
 
 Copy_repo_csfml() {
     cp -r /usr/share/liber/repo-template/csfml/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
-    cp $PATH_LIBER $BASEDIR
+    cp $LIB $BASEDIR
 }
 
 Copy_repo_csfml_withou_lib() {
@@ -56,8 +57,6 @@ Copy_repo_classic_without_lib() {
     cp /usr/share/liber/repo-template/without-lib/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
 }
-
-
 
 #---------------------------Rewrite files--------------------------
 
