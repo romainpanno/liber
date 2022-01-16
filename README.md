@@ -23,6 +23,9 @@ You can also choose whether or not you want to add your library to the project w
 
 You can combine `-csfml` & `-wl` of course.
 
+### Waring !!!
+Don't launch liber in your root it will change default assets !
+
 ## Here are some examples
 ```
 liber
