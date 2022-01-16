@@ -93,8 +93,17 @@ Print_init_success() {
     echo -en "$On_IWhite$BIBlue"
     echo -en "Repository created"
     echo -en "$Color_Off"
-    echo -e "$Check_symbol"
+    echo -e " $Check_symbol"
 }
+
+#--------------------------Error message---------------------------
+
+Print_error() {
+    echo -en "$BIRed"
+    echo -en "\nBad input retry with '-h' for help"
+    echo -e "$Color_Off"
+}
+
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Root -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 Update() {
@@ -108,33 +117,36 @@ Update() {
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-Main-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-    if [ $3 ]; then
-        Print_error
-    elif [[ $1 ]] && [[ $2 ]]; then
-        if [[ $1 == "-wl" || $1 == "--without-lib" ]] && [[ $2 == "-g" || $2 == "--csfml" ]]; then
-            User_input
-            Copy_repo_csfml_withou_lib
-            Print_init_success
-        elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
-            User_input
-            Copy_repo_csfml_withou_lib
-            Print_init_success
-        else
-            Print_error
-        fi
-    elif [ $1 ]; then
-        if [[ $1 == "-u" ]]; then
-            Update
-        elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
-            User_input
-            Copy_repo_classic_without_lib
-            Print_init_success
-        elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
-            User_input
-            Copy_repo_csfml
-            Print_init_success
-    else
+if [ $3 ]; then
+    Print_error
+elif [[ $1 ]] && [[ $2 ]]; then
+    if [[ $1 == "-wl" || $1 == "--without-lib" ]] && [[ $2 == "-g" || $2 == "--csfml" ]]; then
         User_input
-        Copy_repo_classic
+        Copy_repo_csfml_withou_lib
         Print_init_success
+    elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
+        User_input
+        Copy_repo_csfml_withou_lib
+        Print_init_success
+    else
+        Print_error
     fi
+elif [ $1 ]; then
+    if [[ $1 == "-u" ]]; then
+        Update
+    elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
+        User_input
+        Copy_repo_classic_without_lib
+        Print_init_success
+    elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
+        User_input
+        Copy_repo_csfml
+        Print_init_success
+    else
+        Print_error
+    fi
+else
+    User_input
+    Copy_repo_classic
+    Print_init_success
+fi
