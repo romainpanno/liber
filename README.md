@@ -14,6 +14,9 @@ Just enter this line in your terminal to init Liber :
 sudo bash -c "$(curl fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
 ```
 
+![Alt Initialisation](https://i.ibb.co/sCrsB1M/init.gif)
+
+
 Liber can crate a project for a classic project & a graphic project (not for python because huntears once said "it's just a shebang and a contition":
 
 You can also choose whether or not you want to add your library to the project with `-wl` or `--without-lib` flag. 
@@ -27,12 +30,16 @@ liber
 This command will create your repository with :
   - Makefile, (my own make file with colors, a gift from me if you haven't already)
   - src/      :
-                - main.c
+                  main.c
   - include/  :
-                - my.h
+                  my.h
   - tests/    :
-                - tests.c
+                  tests.c
   - lib/
+
+![Alt Initialisation](https://i.ibb.co/w7dyVRL/example-liber.gif)
+
+![Alt Initialisation](https://i.ibb.co/QC5sh67/result.gif)
 
 ```
 liber -g
@@ -40,9 +47,9 @@ liber -g
 This command will create your repository with :
   - Makefile, (with CSFML flags : Window, System, Graphics & Audio)
   - src/      :
-                - main.c
+                  main.c
   - include/  :
-                - my.h (with CSFML includes
+                  my.h (with CSFML includes
   - lib/
 
 Here there is no test file but if you want it to be the case, don't hesitate to talk to me by sending me a pm or a pr!
@@ -54,11 +61,11 @@ liber -wl
 This command will create your repository with :
   - Makefile,
   - src/      :
-                - main.c
+                  main.c
   - include/  :
-                - my.h
+                  my.h
   - tests/    :
-                - tests.c
+                  tests.c
 
 
 ```
@@ -67,9 +74,9 @@ liber -g -wl
 This command will create your repository with :
   - Makefile, (with CSFML flags : Window, System, Graphics & Audio)
   - src/      :
-                - main.c
+                  main.c
   - include/  :
-                - my.h (with CSFML includes
+                  my.h (with CSFML includes
 
 
 ## For UPDATE
