@@ -20,9 +20,10 @@ Color_Off='\033[0m'
 BBlue='\033[1;34m'
 BIGreen='\033[1;92m'
 BIRed='\033[1;91m'
-
+BIWhite='\033[1;97m'
 BIBlue='\033[1;94m'
 
+UCyan='\033[4;36m'
 
 BOLD="\033[1m"
 UNBOLD="\033[0m"
@@ -88,10 +89,11 @@ Print_init_success() {
 
 Print_help() {
     echo -en "$BIGrenn"
-    echo -en "[ Help ]"
-    echo -e "$Color_Off"
-    echo -en "Use flag :\n\t- '-h' or '--help' for help\n\n\t- '-g' or '--csfml' for csfml repo\n\n\t"
-    echo -e "-'-wl' or '--without-lib' for repo without your lib\n\n\tYou can combine flags if you want"
+    echo -e "[ Help ]$Color_Off"
+    echo -en "Use flag :\n\t$BIWhite-h$Color_Off or $BIWhite--help$Color_Off "
+    echo -en "for help\n\n\t$BIWhite-g$Color_Off or $BIWhite--csfml$Color_Off for csfml repo\n\n\t"
+    echo -e "$BIWhite-wl$Color_Off or $BIWhite--without-lib$Color_Off for repo without your lib\n\n"
+    echo -e  "\t$UCyan--------- You can combine flags if you want ---------$Color_Off"
 }
 
 #--------------------------Error message---------------------------
