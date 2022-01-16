@@ -25,13 +25,13 @@ BIRed='\033[1;91m'
 Display_title() {
     echo -en "$BIBlue"
     echo -e "
-                ██╗         ██╗    ██████╗     ███████╗    ██████╗
-▄ ██╗▄▄ ██╗▄    ██║         ██║    ██╔══██╗    ██╔════╝    ██╔══██╗    ▄ ██╗▄▄ ██╗▄
- ████╗ ████╗    ██║         ██║    ██████╔╝    █████╗      ██████╔╝     ████╗ ████╗
-▀╚██╔▀▀╚██╔▀    ██║         ██║    ██╔══██╗    ██╔══╝      ██╔══██╗    ▀╚██╔▀▀╚██╔▀
-  ╚═╝   ╚═╝     ███████╗    ██║    ██████╔╝    ███████╗    ██║  ██║      ╚═╝   ╚═╝
-                ╚══════╝    ╚═╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝
-                                                                    By Romain Panno"
+          ██╗         ██╗    ██████╗     ███████╗    ██████╗
+▄ ██╗▄    ██║         ██║    ██╔══██╗    ██╔════╝    ██╔══██╗    ▄ ██╗▄
+ ████╗    ██║         ██║    ██████╔╝    █████╗      ██████╔╝     ████╗
+▀╚██╔▀    ██║         ██║    ██╔══██╗    ██╔══╝      ██╔══██╗    ▀╚██╔▀
+  ╚═╝     ███████╗    ██║    ██████╔╝    ███████╗    ██║  ██║      ╚═╝
+          ╚══════╝    ╚═╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝
+                                                        By Romain Panno"
     echo -e "$Color_Off"
 }
 
@@ -130,9 +130,18 @@ Print_update_success() {
 
 Print_help() {
     echo -en "$BIGrenn"
-    echo -en "[ Help ]"
+    echo -e "[ Help ]"
     echo -e "$Color_Off"
-    echo -e "Use flag :\n\t- '-h' or '--help' for help\n\n\t- 'u' or '--update' for update\n"
+    echo -e "Use flag :\n\t- '-h' or '--help' for help\n\n\t- 'u' or '--update' for update\n\n\t- 'l' or '--lib' for change your lib pth"
+    GREP_PATH=$(grep -e 'PATH_LIBER=' /etc/environment)
+    if [ $GREP_PATH ]; then
+        echo -en "\nYou have already set your library path: "
+        echo -en "$BIWhite"
+        echo -e "$GREP_PATH$Color_Off"
+        echo -e "If you want to change it use '-l' or '--lib' flag\n"
+    fi
+    echo -en "$BIBlue"
+    echo -e "eZ by romain$Color_Off"
 }
 
 Print_error() {
@@ -141,25 +150,15 @@ Print_error() {
     echo -e "$Color_Off"
 }
 
-#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Root -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-Must_root() {
-    if [[ $EUID -ne 0 ]]; then
-        echo -e "\033[0;31mThe installation must be run as root."
-        echo -e "\033[0;31mPlease enter your password:\033[0m"
-        sudo "$0" "sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)\""
-        exit $?
-    fi
-}
-
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Main -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-Must_root
 Display_title
 if [ $2 ]; then
     Print_error
 elif [[ $1 == "-u" || $1 == "--update" ]]; then
-        Init_LibPath
         Place_repository
         Print_update_success
+elif [[ $1 == "-l" || $1 == "--lib" ]]; then
+        Init_LibPath
 elif [[ $1 == "-h" || $1 == "--help" ]]; then
     Print_help
 elif [[ $1 ]]; then

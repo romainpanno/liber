@@ -107,11 +107,11 @@ Print_error() {
 
 Update() {
     if [[ $EUID -ne 0 ]]; then
-        echo -e "\033[0;31mThe installation must be run as root."
-        echo -e "\033[0;31mPlease enter your password:\033[0m"
-        sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)\"
-        exit $?
+        echo -en "$BIRed"
+        echo -e "Password needed$Color_Off"
+        echo -e "The installation must be run as root."
     fi
+    sudo bash /usr/share/liber/init.sh $1
 }
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-Main-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
@@ -157,7 +157,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
         Print_error
     fi
 elif [ $1 ]; then
-    if [[ $1 == "-u" ]]; then
+    if [ $1 == "-u" ]; then
         Update
     elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
         #user input
