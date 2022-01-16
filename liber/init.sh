@@ -80,8 +80,8 @@ Init_LibPath() {
     if [ -z $GREP_PATH ]; then
         sudo echo "PATH_LIBER=$PATH_LIB" >> /etc/environment
     else
-        if [ -f tmp_liber ]; then
-            rm tmp_liber
+        if [[ -f /tmp/tmp_liber ]]; then
+            sudo rm /tmp/tmp_liber
         fi
         sudo grep -v -e 'PATH_LIBER=' /etc/environment > /tmp/tmp_liber
         if [ -f /tmp/tmp_liber ]; then
@@ -103,12 +103,14 @@ Place_repository() {
     cd /tmp/
     git clone "https://github.com/romainpanno/liber"
     if [ -d /usr/share/liber ]; then
+        echo "ca rm"
         sudo rm -r /usr/share/liber
     fi
     if [ -f /usr/local/bin/liber ]; then
         sudo rm -r /usr/share/liber
     fi
-    sudo cp -r liber /usr/share/
+    sudo cp -r liber/ /usr/share/
+    ls /usr/share/liber/
     sudo mv /usr/share/liber/liber.sh /usr/local/bin/
     sudo mv /usr/local/bin/liber.sh /usr/local/bin/liber
     sudo chmod +x /usr/local/bin/liber
