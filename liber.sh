@@ -36,14 +36,14 @@ Copy_repo_classic() {
     cp -r /usr/share/liber/repo-template/classic/* $BASEDIR
     cp /usr/share/liber/repo-template/classic/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
-    cp $LIB $BASEDIR
+    cp -r $LIB $BASEDIR
 }
 
 Copy_repo_csfml() {
     cp -r /usr/share/liber/repo-template/csfml/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
-    cp $LIB $BASEDIR
+    cp -r $LIB $BASEDIR
 }
 
 Copy_repo_csfml_withou_lib() {
@@ -61,7 +61,7 @@ Copy_repo_classic_without_lib() {
 #---------------------------Rewrite files--------------------------
 
 Rewrite_files() {
-    $NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
+    NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     DESCRIPTION=$(echo "$DESCRIPTION" |  tr '[:upper:]' '[:lower:]' )
     HEADER_NAME=$(echo "$NAME" |  tr '[:lower:]' '[:upper:]' )
 
