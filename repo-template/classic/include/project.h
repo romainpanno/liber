@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** $NAME
+** okey
 ** File description:
 ** $DESCRIPTION
 */

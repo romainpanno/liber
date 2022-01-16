@@ -116,6 +116,15 @@ Update() {
     sudo bash /usr/share/liber/init.sh -u
 }
 
+Update_lib() {
+    if [[ $EUID -ne 0 ]]; then
+        echo -en "$BIRed"
+        echo -e "Password needed$Color_Off"
+        echo -e "The installation must be run as root."
+    fi
+    sudo bash /usr/share/liber/init.sh -l
+}
+
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-Main-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 if [ $3 ]; then
@@ -200,6 +209,10 @@ elif [ $1 ]; then
         fi
         Rewrite_files
         Print_init_success
+    elif [[ $1 == '-l' || $1 == "--lib" ]]; then
+        echo -en "\n$BIBlue"
+        echo -e "Current path for lib:$Color_Off$BOLD $LIB\n$UNBOLD"
+        Update_lib
     elif [[ $1 == "-h" || $1 == "--help" ]]; then
         Print_help
     else

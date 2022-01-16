@@ -1,17 +1,17 @@
 /*
 ** EPITECH PROJECT, 2022
-** $NAME
+** okey
 ** File description:
 ** $DESCRIPTION
 */
 
 #include <criterion/criterion.h>
-#include "../include/$NAME.h"
+#include "../include/okey.h"
 #include <criterion/redirect.h>
 
 Test(funcname, name, .init = cr_redirect_stdout)
 {
-    char *av[] = {"./$NAME", ""};
+    char *av[] = {"./okey", ""};
     int ac = 2;
     char *res = "";
 
