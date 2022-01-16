@@ -92,9 +92,9 @@ Print_error() {
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Root -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 Update() {
     if [[ $EUID -ne 0 ]]; then
-        echo "\033[0;31mThe installation must be run as root."
-        echo "\033[0;31mPlease enter your password:\033[0m"
-        sudo "$0" "sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/aureliancnx/Bubulle-Norminette/master/install_bubulle.sh)\""
+        echo -e "\033[0;31mThe installation must be run as root."
+        echo -e "\033[0;31mPlease enter your password:\033[0m"
+        sudo sh -c \"$(curl -fsSL https://raw.githubusercontent.com/aureliancnx/Bubulle-Norminette/master/install_bubulle.sh)\"
         exit $?
     fi
 }
