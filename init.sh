@@ -42,6 +42,13 @@ Init_LibPath() {
     echo -en "$Color_Off$BIWhite"
     read PATH_LIB
     echo -en "$Color_Off"
+    if [ -d "$PATH_LIB" ]; then
+        echo -en "$BIBlue"
+        echo -en "are you shure ? y/n: "
+        echo -en "$Color_Off$BIWhite"
+        read ARE_SHURE
+        echo -en "$Color_Off"
+    fi
 
     while [[ ! -d "$PATH_LIB" ]] || [[ -z "$PATH_LIB" ]] || [[ $ARE_SHURE == "n" ]]
     do
