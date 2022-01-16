@@ -150,8 +150,22 @@ Print_error() {
     echo -e "$Color_Off"
 }
 
+#------------------------- Check sudo -------------------------
+
+Check_sudo() {
+    if [[ $EUID -ne 0 ]]; then
+        echo -en "$BIRed"
+        echo -e "Password needed$Color_Off"
+        echo -e "The installation must be run as root."
+        sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
+        exit $?
+    fi
+}
+
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Main -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 Display_title
+Check_sudo
 if [ $2 ]; then
     Print_error
 elif [[ $1 == "-u" || $1 == "--update" ]]; then
