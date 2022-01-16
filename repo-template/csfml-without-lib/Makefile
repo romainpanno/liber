@@ -5,7 +5,7 @@
 ## makefile that gcc
 ##
 
-COMPILATION = project_name
+COMPILATION = $NAME
 
 SRC 	=	src/main.c
 

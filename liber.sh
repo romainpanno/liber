@@ -35,12 +35,14 @@ Copy_repo_classic() {
     cp -r /usr/share/liber/repo-template/classic/* $BASEDIR
     cp /usr/share/liber/repo-template/classic/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
+    cp $PATH_LIBER $BASEDIR
 }
 
 Copy_repo_csfml() {
     cp -r /usr/share/liber/repo-template/csfml/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
+    cp $PATH_LIBER $BASEDIR
 }
 
 Copy_repo_csfml_withou_lib() {
