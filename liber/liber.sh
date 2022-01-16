@@ -111,26 +111,26 @@ Update() {
 main() {
     if [ $3 ]; then
         Print_error
-    else if [[ $1 ]] && [[ $2 ]]; then
+    elif [[ $1 ]] && [[ $2 ]]; then
         if [[ $1 == "-wl" || $1 == "--without-lib" ]] && [[ $2 == "-g" || $2 == "--csfml" ]]; then
             User_input
             Copy_repo_csfml_withou_lib
             Print_init_success
-        else if [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
+        elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
             User_input
             Copy_repo_csfml_withou_lib
             Print_init_success
         else
             Print_error
         fi
-    else if [ $1 ]; then
+    elif [ $1 ]; then
         if [[ $1 == "-u" ]]; then
             Update
-        else if [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
+        elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
             User_input
             Copy_repo_classic_without_lib
             Print_init_success
-        else if [[ $1 == "-g" || $1 == "--csfml" ]]; then
+        elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
             User_input
             Copy_repo_csfml
             Print_init_success

@@ -37,6 +37,7 @@ Display_title() {
 
 #------------------------- Init library path ------------------------
 Init_LibPath() {
+    echo -en "$BIBlue"
     echo -en "Enter your library path: "
     echo -en "$Color_Off$BIWhite"
     read PATH_LIB
@@ -80,7 +81,7 @@ Init_LibPath() {
     if [ -z $GREP_PATH ]; then
         sudo echo "PATH_LIBER=$PATH_LIB" >> /etc/environment
     else
-        if [[ -f /tmp/tmp_liber ]]; then
+        if [ -f /tmp/tmp_liber ]; then
             sudo rm /tmp/tmp_liber
         fi
         sudo grep -v -e 'PATH_LIBER=' /etc/environment > /tmp/tmp_liber
@@ -89,7 +90,6 @@ Init_LibPath() {
             sudo mv /tmp/tmp_liber /etc/
             sudo mv /etc/tmp_liber /etc/environment
             sudo echo "PATH_LIBER=$PATH_LIB" >> /etc/environment
-            sudo rm /tmp/tmp_liber
         else
             echo -en "$BIRed"
             echo -en "ERROR DURING INITIALISATION, please retry command in an other repository"
@@ -107,7 +107,7 @@ Place_repository() {
         sudo rm -r /usr/share/liber
     fi
     if [ -f /usr/local/bin/liber ]; then
-        sudo rm -r /usr/share/liber
+        sudo rm -r /usr/local/bin/liber
     fi
     cd liber/
     sudo cp -r liber/ /usr/share/
@@ -115,6 +115,7 @@ Place_repository() {
     sudo mv /usr/share/liber/liber.sh /usr/local/bin/
     sudo mv /usr/local/bin/liber.sh /usr/local/bin/liber
     sudo chmod +x /usr/local/bin/liber
+    cd ..
     sudo rm -r /tmp/liber
 }
 
