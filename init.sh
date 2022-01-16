@@ -109,6 +109,7 @@ Place_repository() {
     if [ -f /usr/local/bin/liber ]; then
         sudo rm -r /usr/share/liber
     fi
+    cd liber/
     sudo cp -r liber/ /usr/share/
     ls /usr/share/liber/
     sudo mv /usr/share/liber/liber.sh /usr/local/bin/
