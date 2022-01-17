@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=V1.2
+VERSION=V1.3
 
 #export lib path variable
 source /etc/environment
@@ -56,9 +56,9 @@ Init_LibPath() {
         echo -en "$Color_Off"
     fi
 
-    while [[ ! -d "$PATH_LIB" ]] || [[ -z "$PATH_LIB" ]] || [[ $ARE_SHURE == "n" ]]
+    while [[ ! -d "$PATH_LIB" ]] || [[ -z "$PATH_LIB" ]] || [[ $ARE_SHURE != "y" ]]
     do
-        if [[ -z "$PATH_LIB" || ! -d "$PATH_LIB" ]]; then
+        if [[ -z "$PATH_LIB" || ! -d "$PATH_LIB" || $ARE_SHURE != "n" ]]; then
             echo -en "$BIRed"
             echo -en "Wrong path retry: "
             echo -en "$Color_Off"
