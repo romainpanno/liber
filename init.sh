@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=V1.4
+VERSION=V1.5
 
 #export lib path variable
 source /etc/environment
@@ -23,11 +23,15 @@ BIGreen='\033[1;92m'
 BIBlue='\033[1;94m'
 BIWhite='\033[1;97m'
 BIRed='\033[1;91m'
+Purple='\033[0;35m'
+
+BOLD="\033[1m"
+UNBOLD="\033[0m"
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Init liber -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 #------------------------------ Title -------------------------------
-Display_title() {
+display_title() {
     echo -en "$BIBlue"
     echo -e "
           ██╗         ██╗    ██████╗     ███████╗    ██████╗
@@ -42,7 +46,7 @@ $BIGreen$VERSION"
 }
 
 #------------------------- Init library path ------------------------
-Init_LibPath() {
+init_LibPath() {
     echo -en "$BIBlue"
     echo -en "Enter your library path: "
     echo -en "$Color_Off$BIWhite"
@@ -102,7 +106,7 @@ Init_LibPath() {
 }
 
 #------------------------ Replace repository ------------------------
-Place_repository() {
+place_repository() {
     cd /tmp/
     git clone "https://github.com/romainpanno/liber"
     if [ -d /usr/share/liber ]; then
@@ -119,41 +123,39 @@ Place_repository() {
 }
 
 #------------------------- Print func -------------------------
-Print_init_success() {
+print_init_success() {
     echo -en "$BIGreen"
     echo -en "Initialised successfully"
     echo -e "$Color_Off"
 }
 
-Print_update_success() {
+print_update_success() {
     echo -en "$BIGreen"
     echo -en "Updated successfully"
     echo -e "$Color_Off"
 }
 
-Print_help() {
+print_help() {
     echo -en "$BIGrenn"
     echo -e "[ Help ]"
     echo -e "$Color_Off"
-    echo -e "Use flag :\n\t- '-h' or '--help' for help\n\n\t- 'u' or '--update' for update\n\n\t- 'l' or '--lib' for change your lib pth"
+    echo -e "Use flag :\n\t$BOLD-h$UNBOLD or $BOLD--help$UNBOLD for help\n\n\t$BOLD-u$UNBOLD or $BOLD--update$UNBOLD for update\n\n\t$BOLD-l$UNBOLD or $BOLD--lib$UNBOLD for change your lib path"
     GREP_PATH=$(grep -e 'PATH_LIBER=' /etc/environment)
-    if [ $GREP_PATH ]; then
-        echo -en "\nYou have already set your library path: "
-        echo -en "$BIWhite"
-        echo -e "$GREP_PATH$Color_Off"
-        echo -e "If you want to change it use '-l' or '--lib' flag\n"
+    if [ -n $GREP_PATH ]; then
+        echo -e "$Purple\n\nYou have already set your library path: $Color_Off$BIWhite$GREP_PATH$Color_Off"
+        echo -e "If you want to change it use $BOLD-l$UNBOLD or $BOLD--lib$UNBOLD flag\n"
     fi
     echo -en "$BIBlue"
-    echo -e "eZ by romain$Color_Off"
+    echo -e "\neZ by romain$Color_Off"
 }
 
-Print_error() {
+print_error() {
     echo -en "$BIRed"
     echo -en "\nBad input retry with '-h' for help"
     echo -e "$Color_Off"
 }
 
-Print_check_verion() {
+print_check_verion() {
     if [[ $VERSION != $GitVersion ]]; then
         echo -e "New update available : $BIGreen$GitVersion$Color_off"
     else
@@ -170,26 +172,26 @@ if [[ $EUID -ne 0 ]]; then
     sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
     exit $?
 elif [ $2 ]; then
-    Display_title
-    Print_error
+    display_title
+    print_error
 elif [[ $1 == "-u" || $1 == "--update" ]]; then
-        Display_title
-        Place_repository
-        Print_update_success
+        display_title
+        place_repository
+        print_update_success
 elif [[ $1 == "-l" || $1 == "--lib" ]]; then
-        Display_title
-        Init_LibPath
+        display_title
+        init_LibPath
 elif [[ $1 == "-h" || $1 == "--help" ]]; then
-    Display_title
-    Print_help
-    Print_check_verion
+    display_title
+    print_help
+    print_check_verion
 elif [[ $1 ]]; then
-    Display_title
-    Print_error
+    display_title
+    print_error
 else
-    Display_title
-    Init_LibPath
-    Place_repository
-    Print_init_success
-    Print_check_verion
+    display_title
+    init_LibPath
+    place_repository
+    print_init_success
+    print_check_verion
 fi
