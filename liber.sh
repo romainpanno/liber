@@ -41,7 +41,7 @@ Check_symbol="\e[5m✔\e[25m"
 #------------------- Init files to the repository -------------------
 
 #copy repo
-Copy_repo_classic() {
+copy_repo_classic() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/classic/* $BASEDIR
     cp /usr/share/liber/repo-template/classic/.gitignore $BASEDIR
@@ -49,7 +49,7 @@ Copy_repo_classic() {
     cp -r $LIB $BASEDIR
 }
 
-Copy_repo_csfml() {
+copy_repo_csfml() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/csfml/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml/.gitignore $BASEDIR
@@ -57,14 +57,14 @@ Copy_repo_csfml() {
     cp -r $LIB $BASEDIR
 }
 
-Copy_repo_csfml_withou_lib() {
+copy_repo_csfml_withou_lib() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/csfml-without-lib/* $BASEDIR
     cp /usr/share/liber/repo-template/csfml-without-lib/.gitignore $BASEDIR
     mv include/project.h include/$NAME.h
 }
 
-Copy_repo_classic_without_lib() {
+copy_repo_classic_without_lib() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template/without-lib/* $BASEDIR
     cp /usr/share/liber/repo-template/without-lib/.gitignore $BASEDIR
@@ -73,7 +73,7 @@ Copy_repo_classic_without_lib() {
 
 #--------------------------- Rewrite files --------------------------
 
-Rewrite_files() {
+rewrite_files() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     DESCRIPTION=$(echo "$DESCRIPTION" |  tr '[:upper:]' '[:lower:]' )
     HEADER_NAME=$(echo "$NAME" |  tr '[:lower:]' '[:upper:]' )
@@ -87,7 +87,7 @@ Rewrite_files() {
 
 #------------------------- Init successfull -------------------------
 
-Print_init_success() {
+print_init_success() {
     echo -en "$On_IWhite$BIBlue"
     echo -en "Repository created"
     echo -en "$Color_Off"
@@ -96,7 +96,7 @@ Print_init_success() {
 
 #--------------------------- Check Version ---------------------------
 
-Print_check_verion() {
+print_check_verion() {
     if [[ $VERSION != $GitVersion ]]; then
         echo -e "New update available : $BIGreen$GitVersion$Color_Off"
     else
@@ -106,7 +106,7 @@ Print_check_verion() {
 
 #--------------------------- Help message ---------------------------
 
-Print_help() {
+print_help() {
     echo -en "$BIGrenn"
     echo -e "[ Help ]$Color_Off"
     echo -en "Use flag :\n\t$BIWhite-h$Color_Off or $BIWhite--help$Color_Off "
@@ -117,7 +117,7 @@ Print_help() {
 
 #-------------------------- Error message ---------------------------
 
-Print_error() {
+print_error() {
     echo -en "$BIRed"
     echo -en "\nBad input retry with '-h' for help"
     echo -e "$Color_Off"
@@ -126,7 +126,7 @@ Print_error() {
 
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- Root -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-Update() {
+update() {
     if [[ $EUID -ne 0 ]]; then
         echo -en "$BIRed"
         echo -e "Password needed$Color_Off"
@@ -135,7 +135,7 @@ Update() {
     sudo bash /usr/share/liber/init.sh -u
 }
 
-Update_lib() {
+update_lib() {
     if [[ $EUID -ne 0 ]]; then
         echo -en "$BIRed"
         echo -e "Password needed$Color_Off"
@@ -149,7 +149,7 @@ Update_lib() {
 echo -e "\t\033[1;91mL\t\033[1;92mI\t\033[1;93mB\t\033[1;94mE\t\033[1;95mR$Color_Off\n"
 
 if [ $3 ]; then
-    Print_error
+    print_error
 elif [[ $1 ]] && [[ $2 ]]; then
     if [[ $1 == "-wl" || $1 == "--without-lib" ]] && [[ $2 == "-g" || $2 == "--csfml" ]]; then
         #user input
@@ -165,10 +165,10 @@ elif [[ $1 ]] && [[ $2 ]]; then
             DESCRIPTION=$NAME
         fi
         #end user input
-        Copy_repo_csfml_withou_lib
-        Rewrite_files
-        Print_init_success
-        Print_check_verion
+        copy_repo_csfml_withou_lib
+        rewrite_files
+        print_init_success
+        print_check_verion
     elif [[ $1 == "-g" || $1 == "--csfml" ]] && [[ $2 == "-wl" || $2 == "--without-lib" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
@@ -183,16 +183,16 @@ elif [[ $1 ]] && [[ $2 ]]; then
             DESCRIPTION=$NAME
         fi
         #end user input
-        Copy_repo_csfml_withou_lib
-        Rewrite_files
-        Print_init_success
-        Print_check_verion
+        copy_repo_csfml_withou_lib
+        rewrite_files
+        print_init_success
+        print_check_verion
     else
-        Print_error
+        print_error
     fi
 elif [ $1 ]; then
     if [ $1 == "-u" ]; then
-        Update
+        update
     elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
@@ -207,10 +207,10 @@ elif [ $1 ]; then
             DESCRIPTION=$NAME
         fi
         #end user input
-        Copy_repo_classic_without_lib
-        Rewrite_files
-        Print_init_success
-        Print_check_verion
+        copy_repo_classic_without_lib
+        rewrite_files
+        print_init_success
+        print_check_verion
     elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
@@ -226,23 +226,23 @@ elif [ $1 ]; then
         fi
         #end user input
         if [ -d $LIB ]; then
-            Copy_repo_csfml
+            copy_repo_csfml
         else
             echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
-            Copy_repo_csfml_withou_lib
+            copy_repo_csfml_withou_lib
         fi
-        Rewrite_files
-        Print_init_success
-        Print_check_verion
+        rewrite_files
+        print_init_success
+        print_check_verion
     elif [[ $1 == '-l' || $1 == "--lib" ]]; then
         echo -en "\n$BIBlue"
         echo -e "Current path for lib:$Color_Off$BOLD $LIB\n$UNBOLD"
-        Update_lib
+        update_lib
     elif [[ $1 == "-h" || $1 == "--help" ]]; then
-        Print_help
-        Print_check_verion
+        print_help
+        print_check_verion
     else
-        Print_error
+        print_error
     fi
 else
     #user input
@@ -259,12 +259,12 @@ else
     fi
     #end user input
     if [ -d $LIB ]; then
-        Copy_repo_classic
+        copy_repo_classic
     else
         echo -e "$BIRed--------- Can't find libray, repo set without ---------$Color_Off"
-        Copy_repo_classic_without_lib
+        copy_repo_classic_without_lib
     fi
-    Rewrite_files
-    Print_init_success
-    Print_check_verion
+    rewrite_files
+    print_init_success
+    print_check_verion
 fi
