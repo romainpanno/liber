@@ -11,7 +11,7 @@ If you don't like it, well find yourself on [raphaelMrci's project link](https:/
 Just enter this line in your terminal to init Liber :
 
 ```
-sudo bash -c "$(curl fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/master/init.sh)"
 ```
 
 ![Alt Initialisation](https://i.ibb.co/sCrsB1M/init.gif)
