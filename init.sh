@@ -199,6 +199,26 @@ else
     done
     if [[ $ARE_SHURE == "y" ]]; then
         init_LibPath
+    else
+        GREP_PATH=$(grep -e 'PATH_LIBER=' /etc/environment)
+
+    if [ -z $GREP_PATH ]; then
+        sudo echo "PATH_LIBER=$PATH_LIB" >> /etc/environment
+    else
+        if [ -f /tmp/tmp_liber ]; then
+            sudo rm /tmp/tmp_liber
+        fi
+        sudo grep -v -e 'PATH_LIBER=' /etc/environment > /tmp/tmp_liber
+        if [ -f /tmp/tmp_liber ]; then
+            sudo rm /etc/environment
+            sudo mv /tmp/tmp_liber /etc/
+            sudo mv /etc/tmp_liber /etc/environment
+            sudo echo "PATH_LIBER=NOLIB" >> /etc/environment
+        else
+            echo -en "$BIRed"
+            echo -en "ERROR DURING INITIALISATION, please retry command in an other repository"
+            echo -e "$Color_Off"
+        fi
     fi
     place_repository
     print_init_success
