@@ -22,6 +22,8 @@ LIB=$PATH_LIBER
 #Colors:
 Color_Off='\033[0m'
 
+Yellow='\033[0;33m'
+
 BBlue='\033[1;34m'
 BIGreen='\033[1;92m'
 BIRed='\033[1;91m'
@@ -88,19 +90,21 @@ rewrite_files() {
 #------------------------- Init successfull -------------------------
 
 print_init_success() {
-    echo -en "$On_IWhite$BIBlue"
+    echo -e "$On_IWhite$BIBlue"
     echo -en "Repository created"
-    echo -en "$Color_Off"
+    echo -e "$Color_Off"
     echo -e " $Check_symbol"
 }
 
 #--------------------------- Check Version ---------------------------
 
 print_check_verion() {
+    echo -e "Project desciption (press ENTERto use project name):"
+    echo -e "\n\n-----------------$Yellow Checking version$Color_Off -----------------"
     if [[ $VERSION != $GitVersion ]]; then
         echo -e "New update available : $BIGreen$GitVersion$Color_Off"
     else
-        echo -e "Liber is up to date !"
+        echo -e "Liber is up to date $BIGreen!$Color_Off"
     fi
 }
 
