@@ -36,6 +36,7 @@ BOLD="\033[1m"
 UNBOLD="\033[0m"
 
 On_IWhite='\033[0;107m'
+On_Black='\033[40m' 
 
 #Check symbol
 Check_symbol="\e[5m✔\e[25m"
@@ -91,14 +92,13 @@ rewrite_files() {
 
 print_init_success() {
     echo -e "$On_IWhite$BIBlue"
-    echo -en "Repository created$Color_Off"
+    echo -en "Repository created$Color_Off$On_Black"
     echo -e " $Check_symbol"
 }
 
 #--------------------------- Check Version ---------------------------
 
 print_check_verion() {
-    echo -e "Project desciption (press ENTERto use project name):"
     echo -e "\n\n-----------------$Yellow Checking version$Color_Off -----------------"
     if [[ $VERSION != $GitVersion ]]; then
         echo -e "New update available : $BIGreen$GitVersion$Color_Off"
