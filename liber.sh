@@ -36,6 +36,8 @@ BOLD="\033[1m"
 UNBOLD="\033[0m"
 
 On_IWhite='\033[0;107m'
+On_IBlack='\033[0;100m'
+
 On_Black='\033[40m'
 
 #Check symbol
@@ -92,8 +94,8 @@ rewrite_files() {
 
 print_init_success() {
     echo -e "$On_IWhite$BIBlue"
-    echo -en "Repository created$Color_Off"
-    echo -en "$Color_Off $Check_symbol"
+    echo -en "Repository created$On_IBlack$Color_Off"
+    echo -en " $Check_symbol"
     echo -e "$Color_Off"
 }
 
