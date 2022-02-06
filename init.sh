@@ -190,7 +190,16 @@ elif [[ $1 ]]; then
     print_error
 else
     display_title
-    init_LibPath
+    echo -en "Do you want to set your library ? y/n :"
+    read ARE_SHURE
+    while [[ $ARE_SHURE != "n" ]] && [[ $ARE_SHURE != "y" ]]
+    do
+        echo -en "Bad input retry with 'y' for yes or 'n' for no"
+        read ARE_SHURE
+    done
+    if [[ $ARE_SHURE == "y" ]]; then
+        init_LibPath
+    fi
     place_repository
     print_init_success
     print_check_verion
