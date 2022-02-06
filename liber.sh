@@ -199,7 +199,7 @@ elif [[ $1 ]] && [[ $2 ]]; then
 elif [ $1 ]; then
     if [ $1 == "-u" ]; then
         update
-    elif [[ $1 == "-wl" || $1 == "--without-lib" ]]; then
+    elif [[ $1 == "-wl" || $1 == "--without-lib" || [[ $LIB == "NOLIB" && $1 != "-g" || $1 != "--csfml" ]] ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
         read NAME
@@ -217,7 +217,7 @@ elif [ $1 ]; then
         rewrite_files
         print_init_success
         print_check_verion
-    elif [[ $1 == "-g" || $1 == "--csfml" ]]; then
+    elif [[ $1 == "-g" || $1 == "--csfml" || $LIB == "NOLIB" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
         read NAME
