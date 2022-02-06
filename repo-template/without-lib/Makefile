@@ -25,16 +25,12 @@ OBJ = $(SRC:.c=.o)
 	@$(CC) -c -o $@ $< $(CFLAGS)
 	@printf "[\033[0;32mcompiled\033[0m] % 29s\n" $< |  tr ' ' '.'
 
-all: make_lib $(COMPILATION)
+all: $(COMPILATION)
 
 $(COMPILATION): $(OBJ)
 	@$(CC) $(OBJ) -o $(COMPILATION)
 	@printf "[\033[0;36mbuilt\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
 	@printf "[\033[1;93mBinary created\033[0m] % 23s\n" $(COMPILATION) | tr ' ' '.'
-
-make_lib:
-	@make $(RULE) -s -C ./lib/my
-	@printf "[\033[1;36mLib created\033[0m]\n"
 
 clean:
 	@$(RM) -f *~ *.gcno *.gcda *.gcda *.swn *.swo *.c.swp
@@ -43,7 +39,7 @@ clean:
 	@$(RM) -f 'unit_tests'
 	@printf "[\033[0;36mDeleted\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
 
-fclean : make_lib clean
+fclean : clean
 	@rm -f $(COMPILATION)
 	@printf "[\033[1;93mBinary deleted\033[0m] % 25s\n" $(COMPILATION) | tr ' ' '.'
 

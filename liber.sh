@@ -41,7 +41,7 @@ On_IBlack='\033[0;100m'
 On_Black='\033[40m'
 
 #Check symbol
-Check_symbol="\e[5m✔\033[0m"
+Check_symbol="\e[5m✔\e[25m"
 
 #------------------- Init files to the repository -------------------
 
