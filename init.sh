@@ -119,7 +119,7 @@ set_no_lib() {
             sudo rm /etc/environment
             sudo mv /tmp/tmp_liber /etc/
             sudo mv /etc/tmp_liber /etc/environment
-            sudo echo "PATH_LIBER=$PATH_LIB" >> /etc/environment
+            sudo echo "PATH_LIBER=NOLIB" >> /etc/environment
         else
             echo -en "$BIRed"
             echo -en "ERROR DURING INITIALISATION, please retry command in an other repository"
