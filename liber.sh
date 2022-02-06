@@ -94,8 +94,8 @@ rewrite_files() {
 
 print_init_success() {
     echo -e "$On_IWhite$BIBlue"
-    echo -en "Repository created$On_IBlack$Color_Off"
-    echo -en " $Check_symbol"
+    echo -en "Repository created"
+    echo -en "$On_IBlack$Color_Off $Check_symbol"
     echo -e "$Color_Off"
 }
 
