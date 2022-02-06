@@ -92,18 +92,18 @@ rewrite_files() {
 
 print_init_success() {
     echo -e "$On_IWhite$BIBlue"
-    echo -en "Repository created$Color_Off$On_Black"
+    echo -en "Repository created$Color_Off"
     echo -e " $Check_symbol$Color_Off"
 }
 
 #--------------------------- Check Version ---------------------------
 
 print_check_verion() {
-    echo -e "\n\n-----------------$Yellow Checking version$Color_Off -----------------"
+    echo -e "\n-----------------$Yellow Checking version$Color_Off -----------------"
     if [[ $VERSION != $GitVersion ]]; then
         echo -e "New update available : $BIGreen$GitVersion$Color_Off"
     else
-        echo -e "Liber is up to date $BIGreen!$Color_Off"
+        echo -e "Liber is up to date $BIGreen!$Color_Off\n"
     fi
 }
 
