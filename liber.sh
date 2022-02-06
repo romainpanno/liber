@@ -93,7 +93,7 @@ rewrite_files() {
 print_init_success() {
     echo -e "$On_IWhite$BIBlue"
     echo -en "Repository created$Color_Off$On_Black"
-    echo -e "$On_Black $Check_symbol"
+    echo -e " $Check_symbol$Color_Off"
 }
 
 #--------------------------- Check Version ---------------------------
