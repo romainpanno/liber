@@ -35,7 +35,7 @@ endif
 $(COMPILATION): $(OBJ)
 	@$(CC) $(OBJ) -o $(COMPILATION) $(CSFML) $(LDFLAGS)
 	@printf "[\033[0;36mbuilt\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
-	@printf "[\033[1;93mBinary created\033[0m] % 23s\n" $(COMPILATION) | tr ' ' '.'
+	@printf "[\033[1;93mBinary \033[1;32mcreated\033[0m] % 23s\n" $(COMPILATION) | tr ' ' '.'
 
 make_lib:
 	@make $(RULE) -s -C ./lib/my
