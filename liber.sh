@@ -206,7 +206,6 @@ elif [[ $1 ]] && [[ $2 ]]; then
         print_error
     fi
 elif [ $1 ]; then
-    echo -e "liberpath = $LIB"
     if [ $1 == "-u" ]; then
         update
     elif [[ $1 == "-wl" || $1 == "--without-lib" ]] || [[ $IS_NOLIB == "YES" ]]; then
