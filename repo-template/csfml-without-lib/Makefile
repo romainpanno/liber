@@ -45,7 +45,7 @@ else
 	@printf "[\033[1;36mOBJ \033[1;32malready deleted\033[0m]\n"
 endif
 
-fclean : make_lib clean
+fclean : clean
 ifneq (,$(wildcard ./$(COMPILATION)))
 	@rm -f $(COMPILATION)
 	@printf "[\033[1;93mBinary \033[1;31mdeleted\033[0m] % 25s\n" $(COMPILATION) | tr ' ' '.'
