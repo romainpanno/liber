@@ -209,7 +209,7 @@ elif [ $1 ]; then
     echo -e "liberpath = $LIB"
     if [ $1 == "-u" ]; then
         update
-    elif [[ $1 == "-wl" || $1 == "--without-lib" ]] || [[ IS_NOLIB == "YES" ]]; then
+    elif [[ $1 == "-wl" || $1 == "--without-lib" ]] || [[ $IS_NOLIB == "YES" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
         read NAME
