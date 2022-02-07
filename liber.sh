@@ -213,7 +213,7 @@ elif [ $1 ]; then
         echo -en "Enter your project name: $BBlue"
         read NAME
         echo -en "$Color_Off"
-        echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+        echo -en "Project desciption (press$BOLD ENTER$UNBOLD "
         echo -en "to use project name): $BBlue"
         read DESCRIPTION
         echo -en "$Color_Off"

@@ -28,6 +28,9 @@ OBJ = $(SRC:.c=.o)
 	@printf "[\033[0;32mcompiled\033[0m] % 29s\n" $< |  tr ' ' '.'
 
 all: make_lib $(COMPILATION)
+ifneq (,$(wildcard $(COMPILATION)))
+	@printf "[\033[1;32mAlready up to date\033[0m]\n"
+endif
 
 $(COMPILATION): $(OBJ)
 	@$(CC) $(OBJ) -o $(COMPILATION) $(LDFLAGS)
@@ -36,18 +39,33 @@ $(COMPILATION): $(OBJ)
 
 make_lib:
 	@make $(RULE) -s -C ./lib/my
-	@printf "[\033[1;36mLib created\033[0m]\n"
+ifneq (,$(RULE))
+	@printf "[\033[1;35mrule : $(RULE)\033[0m]\n"
+endif
+ifeq (,$(wildcard ./lib/my/*my.a))
+ifeq (, $(RULE))
+	@printf "[\033[1;35mLib rule : all\033[0m]\n"
+endif
+endif
 
 clean:
 	@$(RM) -f *~ *.gcno *.gcda *.gcda *.swn *.swo *.c.swp
-	@$(RM) -f $(OBJ)
 	@$(RM) -f 'a.out'
 	@$(RM) -f 'unit_tests'
-	@printf "[\033[0;36mDeleted\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
+ifneq (,$(wildcard ./$(OBJ)))
+	@$(RM) -f $(OBJ)
+	@printf "[\033[1;31mDeleted\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
+else
+	@printf "[\033[1;36mOBJ \033[1;32malready deleted\033[0m]\n"
+endif
 
 fclean : make_lib clean
+ifneq (,$(wildcard ./$(COMPILATION)))
 	@rm -f $(COMPILATION)
-	@printf "[\033[1;93mBinary deleted\033[0m] % 25s\n" $(COMPILATION) | tr ' ' '.'
+	@printf "[\033[1;93mBinary \033[1;31mdeleted\033[0m] % 25s\n" $(COMPILATION) | tr ' ' '.'
+else
+	@printf "[\033[1;93mBinary \033[1;32malready deleted\033[0m]\n"
+endif
 
 re: fclean all
 
