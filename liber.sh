@@ -18,6 +18,7 @@ HEADER_NAME=$NAME
 #PWD
 BASEDIR=$(pwd)
 LIB=$PATH_LIBER
+IS_NOLIB="NO"
 
 #Colors:
 Color_Off='\033[0m'
@@ -156,6 +157,12 @@ update_lib() {
 
 echo -e "\t\033[1;91mL\t\033[1;92mI\t\033[1;93mB\t\033[1;94mE\t\033[1;95mR$Color_Off\n"
 
+if [ $1 ];then
+    if [[ $LIB == "NOLIB" ]] && [[ $1 != "-g" || $1 != "--csfml" ]]; then
+        IS_NOLIB="yes"
+    fi
+fi
+
 if [ $3 ]; then
     print_error
 elif [[ $1 ]] && [[ $2 ]]; then
@@ -202,7 +209,7 @@ elif [ $1 ]; then
     echo -e "liberpath = $LIB"
     if [ $1 == "-u" ]; then
         update
-    elif [ $1 == "-wl" || $1 == "--without-lib" ] || [ $LIB == "NOLIB" && [ $1 != "-g" || $1 != "--csfml" ]]; then
+    elif [[ $1 == "-wl" || $1 == "--without-lib" ]] || [[ IS_NOLIB == "YES" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
         read NAME
