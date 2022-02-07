@@ -42,7 +42,7 @@ On_IBlack='\033[0;100m'
 On_Black='\033[40m'
 
 #Check symbol
-Check_symbol="\e[5m✔\e[25m"
+Check_symbol="\033[5m✔\033[0m"
 
 #------------------- Init files to the repository -------------------
 
@@ -94,22 +94,19 @@ rewrite_files() {
 #------------------------- Init successfull -------------------------
 
 print_init_success() {
-    echo -e "$On_IWhite$BIBlue"
-    echo -en "Repository created\e[0m"
-    echo -en "$On_IBlack"
-    echo -en $Color_Off
-    echo -en " $Check_symbol"
-    echo -e $Color_Off
+    echo -en "\n----------------"
+    echo -e "$On_IWhite$BIBlue Repository created $Color_Off----------------"
+    echo -e "\t\t________  $BIGreen$Check_symbol  _______"
 }
 
 #--------------------------- Check Version ---------------------------
 
 print_check_verion() {
-    echo -e "\n-----------------$Yellow Checking version$Color_Off -----------------"
+    echo -e "\n-----------------$Yellow Checking version$Color_Off -----------------\n"
     if [[ $VERSION != $GitVersion ]]; then
         echo -e "New update available : $BIGreen$GitVersion$Color_Off"
     else
-        echo -e "Liber is up to date $BIGreen!$Color_Off\n"
+        echo -e "\t\tLiber is up to date $BIGreen!$Color_Off\n"
     fi
 }
 
