@@ -223,7 +223,7 @@ elif [ $1 ]; then
         rewrite_files
         print_init_success
         print_check_verion
-    elif [[ $1 == "-g" || $1 == "--csfml" || $LIB == "NOLIB" ]]; then
+    elif [[ $1 == "-g" || $1 == "--csfml" || $LIB == "NOLIB" && $1 != "-h" ]]; then
         #user input
         echo -en "Enter your project name: $BBlue"
         read NAME
