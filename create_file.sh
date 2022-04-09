@@ -48,23 +48,19 @@ create_file() {
         #find last line for SRC
         LINE=$(grep -a -e '^SRC_TEST' -n Makefile)
         LINE=$(echo -e $LINE | cut -d ':' -f 1)
-        echo "line  $LINE"
         LINE=$(($LINE-3))
         CONTENT=$(sed -e "$LINE!d" Makefile)
         CONTENT_FOR_SED=$(printf "$CONTENT" | sed -e 's/\//\\\//g')
-        echo "content = $CONTENT_FOR_SED"
 
         TAB=$'\t\t\t'
 
         # REPLACE FIRST LINE
-        echo "content = $CONTENT"
         sed -i "/${CONTENT_FOR_SED}/c \\${CONTENT}\\\\" ./Makefile
 
 
 
         #create line to insert
         LINE_INSERT=$(printf "\\$TAB$NAME.c")
-        echo "line insert = $LINE_INSERT"
         SED_CONDITION="$LINE a $LINE_INSERT"
 
         #create new file

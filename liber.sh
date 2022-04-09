@@ -193,7 +193,6 @@ if [ $1 ];then
         IS_NOLIB="yes"
     fi
     FLAGS=$(get_flags "$@")
-    echo "flags = $FLAGS"
 fi
 
 if [ $3 ]; then
@@ -213,7 +212,6 @@ FLAG_n="no"
 if [[ $1 ]]; then
     for L in $(seq 1 ${#FLAGS}); do
         TMP=$(echo $FLAGS | cut -c$L)
-        echo "tmp = $TMP"
         case $TMP in
             h)
                 if [[ $FLAG_h == "no" ]]; then
@@ -294,13 +292,13 @@ if [[ $FLAG_t == "yes" ]]; then
     exit 0
 fi
 
-if [[ $FLAG_u == "yes" ]] ; then
+if [[ $FLAG_u == "yes" ]]; then
     update
     exit 0
 fi
 
-if [[ $FLAG_n == "yes" ]] ; then
-    /usr/share/liber/create_file -c
+if [[ $FLAG_n == "yes" ]]; then
+    /usr/share/liber/create_file.sh -c
     exit 0
 fi
 
