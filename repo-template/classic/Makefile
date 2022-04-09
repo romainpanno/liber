@@ -7,7 +7,8 @@
 
 COMPILATION = $NAME
 
-SRC 	=	src/main.c
+SRC 	:=	main.c
+SRC		:= $(addprefix src/, $(SRC))
 
 SRC_TEST	=	$(filter-out main.c,$(SRC))
 
@@ -29,13 +30,16 @@ OBJ = $(SRC:.c=.o)
 
 all: make_lib $(COMPILATION)
 ifneq (,$(wildcard $(COMPILATION)))
+ifneq ($(RULE), re)
 	@printf "[\033[1;32mAlready up to date\033[0m]\n"
+endif
 endif
 
 $(COMPILATION): $(OBJ)
 	@$(CC) $(OBJ) -o $(COMPILATION) $(LDFLAGS)
 	@printf "[\033[0;36mbuilt\033[0m] % 32s\n" $(OBJ) | tr ' ' '.'
-	@printf "[\033[1;93mBinary \033[1;32mcreated\033[0m] % 23s\n" $(COMPILATION) | tr ' ' '.'
+	@printf "[\033[1;93mBinary \033[1;32mcreated\
+	\033[0m] % 23s\n" $(COMPILATION) | tr ' ' '.'
 
 make_lib:
 	@make $(RULE) -s -C ./lib/my
@@ -62,7 +66,8 @@ endif
 fclean : make_lib clean
 ifneq (,$(wildcard ./$(COMPILATION)))
 	@rm -f $(COMPILATION)
-	@printf "[\033[1;93mBinary \033[1;31mdeleted\033[0m] % 25s\n" $(COMPILATION) | tr ' ' '.'
+	@printf "[\033[1;93mBinary \033[1;31mdeleted\
+	\033[0m] % 25s\n" $(COMPILATION) | tr ' ' '.'
 else
 	@printf "[\033[1;93mBinary \033[1;32malready deleted\033[0m]\n"
 endif
