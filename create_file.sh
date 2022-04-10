@@ -37,7 +37,7 @@ create_file() {
         fi
 
         cp /usr/share/liber/file/file.c $BASEDIR
-        if [[ ! -f $BASEDIR/$NAME.c ]]; then
+        if [[ ! -f $BASEDIR/file.c ]]; then
             echo -en "$BIRed"
             echo -en "\nBad input retry with or bad file '-h' for help"
             echo -e "$Color_Off"
@@ -74,10 +74,10 @@ create_file() {
         echo "$NEW_FILE" > tmp
 
         #replace old file
-        if [[ -f Makefile.bak ]]; then
-            rm Makefile.bak
+        if [[ -f .Makefile.bak ]]; then
+            rm .Makefile.bak
         fi
-        mv Makefile Makefile.bak
+        mv Makefile .Makefile.bak
         mv tmp Makefile
     else
         print_error
