@@ -36,7 +36,13 @@ create_file() {
                 DESCRIPTION=$NAME
         fi
 
-        cp /home/romain/bashfunc/liber_project/liber/file/file.c $BASEDIR
+        cp /usr/share/liber/file/file.c $BASEDIR
+        if [[ ! -f $BASEDIR/$NAME.c ]]; then
+            echo -en "$BIRed"
+            echo -en "\nBad input retry with or bad file '-h' for help"
+            echo -e "$Color_Off"
+            exit 84
+        fi
         NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
         mv file.c $NAME.c
         if [[ -d "$BASEDIR/src" ]]; then
