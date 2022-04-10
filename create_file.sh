@@ -68,7 +68,9 @@ create_file() {
         echo "$NEW_FILE" > tmp
 
         #replace old file
-        rm Makefile.bak
+        if [[ -f Makefile.bak ]]; then
+            rm Makefile.bak
+        fi
         mv Makefile Makefile.bak
         mv tmp Makefile
     else
