@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=V2
+VERSION=V3
 
 #export lib path variable
 source /etc/environment
