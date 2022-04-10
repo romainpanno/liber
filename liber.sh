@@ -298,7 +298,17 @@ if [[ $FLAG_u == "yes" ]]; then
 fi
 
 if [[ $FLAG_n == "yes" ]]; then
-    /usr/share/liber/create_file.sh -c < /dev/tty
+    echo -en "Enter your file name: $BBlue"
+    read NAME
+    echo -en "$Color_Off"
+    echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
+    echo -en "to use project name): $BBlue"
+    read DESCRIPTION
+    echo -en "$Color_Off"
+    if [ -z "$DESCRIPTION" ]; then
+        DESCRIPTION=$NAME
+    fi
+    /usr/share/liber/create_file.sh $NAME $DESCRIPTION
     exit 0
 fi
 

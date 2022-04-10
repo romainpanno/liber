@@ -23,19 +23,8 @@ print_error() {
 }
 
 create_file() {
-    if [[ $1 == "-c" ]]; then
-        echo -en "Enter your file name: $BBlue"
-        read NAME
-        echo -en "$Color_Off"
-        echo -en "Project desciption (press$BOLD ENTER$UNBOLD"
-        echo -en "to use project name): $BBlue"
-        read DESCRIPTION
-        echo -en "$Color_Off"
-
-        if [ -z "$DESCRIPTION" ]; then
-                DESCRIPTION=$NAME
-        fi
-
+        NAME=$1
+        DESCRIPTION=$2
         cp /home/romain/bashfunc/liber_project/liber/file/file.c $BASEDIR
         NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
         mv file.c $NAME.c
@@ -77,7 +66,7 @@ create_file() {
 }
 
 if [[ -f "./Makefile" ]] && [[ -d "./src/" ]] && [[ ! -z "$(grep -e "^SRC 	:=" Makefile)" ]] && [[ ! -z "$(grep -e "^SRC_TEST" Makefile)" ]]; then
-    create_file "$1"
+    create_file "$1" "$2"
 else
     print_error
     exit 84
