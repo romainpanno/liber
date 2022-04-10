@@ -14,7 +14,7 @@ SRC_TEST	=	$(filter-out main.c,$(SRC))
 
 TEST	=	tests/tests.c
 
-CFLAGS	=	-Wall -Wextra -pedantic -I./include
+CFLAGS	=	-Wall -Wextra -pedantic -I./include -I./lib/my
 
 LDFLAGS	=	-L ./lib/my/ -lmy
 

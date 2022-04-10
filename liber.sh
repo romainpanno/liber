@@ -298,7 +298,7 @@ if [[ $FLAG_u == "yes" ]]; then
 fi
 
 if [[ $FLAG_n == "yes" ]]; then
-    bash -c "/usr/share/liber/create_file.sh -c"
+    /usr/share/liber/create_file.sh -c < /dev/tty
     exit 0
 fi
 
