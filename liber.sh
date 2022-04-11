@@ -324,9 +324,11 @@ if [[ $FLAG_w == "yes" ]] || [[ $IS_NOLIB == "yes" ]] ; then
     fi
     if [[ $FLAG_g == "yes" ]]; then
         copy_repo_csfml_withou_lib
-    fi
     else
         copy_repo_classic_without_lib
+    fi
+else
+    copy_repo_classic
 fi
 
 #modif files & print end
