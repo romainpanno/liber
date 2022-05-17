@@ -266,6 +266,7 @@ if [[ $1 ]]; then
                 fi
                 ;;
             *)
+                print_error
                 exit 84
                 ;;
         esac
