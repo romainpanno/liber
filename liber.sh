@@ -116,8 +116,9 @@ print_help() {
     echo -en "$BIGrenn"
     echo -e "[ Help ]$Color_Off"
     echo -en "Use flag :\n\t$BIWhite-h$Color_Off or $BIWhite--help$Color_Off "
-    echo -en "for help\n\n\t$BIWhite-g$Color_Off or $BIWhite--csfml$Color_Off for csfml repo\n\n\t"
-    echo -e "$BIWhite-w$Color_Off or $BIWhite--without-lib$Color_Off for repo without your lib\n\n"
+    echo -en "for help\n\n\t$BIWhite-g$Color_Off or $BIWhite--csfml$Color_Off for csfml repo\n\n"
+    echo -e "\t$BIWhite-w$Color_Off or $BIWhite--without-lib$Color_Off for repo without your lib\n"
+    echo -e "\t$BIWhite-n$Color_Off to create a new file and add it to the Makefile\n\n"
     echo -e  "\t$UCyan--------- You can combine flags if you want ---------$Color_Off"
 }
 
@@ -191,10 +192,11 @@ get_flags() {
     echo $RESULT
 }
 
+if [[ $LIB == "NOLIB" ]] || [[ ! -d $LIB ]] ; then
+    IS_NOLIB="yes"
+fi
+
 if [ $1 ];then
-    if [[ $LIB == "NOLIB" ]] || [[ ! -d $LIB ]] ; then
-        IS_NOLIB="yes"
-    fi
     FLAGS=$(get_flags "$@")
 fi
 
