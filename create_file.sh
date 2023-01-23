@@ -45,7 +45,7 @@ create_file() {
         fi
         NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
         mv file.cpp $NAME.cpp
-        mv projet.hpp $NAME.hpp
+        mv project.hpp $NAME.hpp
         if [[ -d "$BASEDIR/src" ]]; then
             mv $NAME.cpp src/$NAME.cpp
             mv $NAME.hpp src/$NAME.hpp
