@@ -26,7 +26,12 @@ KO=$(BGREEN)$(BLINK)X$(NO_COLOR)
 
 define delete
 $(foreach rm_var, $1, \
-		$(if $(wildcard $(rm_var)), rm -f $(rm_var) && \
+		$(if $(wildcard $(rm_var)), $(RM) $(rm_var) && \
+		printf "$(BRED)[$(RED)deleted$(BRED)] $(NO_COLOR)\
+		:$(RED) $(rm_var)$(NO_COLOR)\n";) \
+)
+$(foreach rm_var, $1, \
+		$(if $(wildcard ./src/$(rm_var)), ./src/$(rm_var) && \
 		printf "$(BRED)[$(RED)deleted$(BRED)] $(NO_COLOR)\
 		:$(RED) $(rm_var)$(NO_COLOR)\n";) \
 )
@@ -41,8 +46,8 @@ endef
 
 COMPILATION	=	$NAME
 
-SRC	:=	$NAME.cpp			\
-SRC	:= $(addprefix src/,$(SRC))
+SRC	:=	$NAME.cpp
+SRC	:= $(addprefix ./src/,$(SRC))
 
 CPPFLAGS	=	-Wall -Wextra -Wpedantic -I./src
 
@@ -66,7 +71,7 @@ CC	=	g++
 OBJ = $(SRC:.cpp=.o)
 
 $(COMPILATION):	$(OBJ)
-	@$(CC) -c -o $(COMPILATION) $(OBJ)
+	@$(CC) -o $(COMPILATION) $(OBJ)
 	@printf "\n$(BGREEN)$(COMPILATION)$(NO_COLOR)\
 	 -> $(BGREEN)created $(OK)$(NO_COLOR)\n"
 

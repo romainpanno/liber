@@ -248,7 +248,7 @@ if [[ $FLAG_u == "yes" ]]; then
 fi
 
 if [[ $FLAG_n == "yes" ]]; then
-    /usr/share/liber/create_file.sh -c
+    /usr/share/liber/create_file.sh --cpp
     exit 0
 fi
 
