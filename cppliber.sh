@@ -12,7 +12,7 @@ GitVersion=$(curl -fsSL https://raw.githubusercontent.com/romainpanno/liber/mast
 
 #Variables needed to edit template files
 NAME="project"
-DESCRIPTION="descriptio"
+DESCRIPTION="description"
 HEADER_NAME=$NAME
 
 #PWD
@@ -51,7 +51,14 @@ copy_repo_classic() {
     cp /usr/share/liber/repo-template-cpp/classic/.gitignore $BASEDIR
     mv project.hpp $NAME.hpp
     mv file.cpp $NAME.cpp
-    cp -r $LIB $BASEDIR
+}
+
+copy_repo_complete() {
+    NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
+    cp -r /usr/share/liber/repo-template-cpp/classic-shit/* $BASEDIR
+    cp /usr/share/liber/repo-template-cpp/classic-shit/.gitignore $BASEDIR
+    mv project.hpp $NAME.hpp
+    mv file.cpp $NAME.cpp
 }
 
 #--------------------------- Rewrite files --------------------------
@@ -139,8 +146,8 @@ get_flags() {
             -h|--help)
                 RESULT=$RESULT"h"
                 ;;
-            -g|--csfml)
-                RESULT=$RESULT"g"
+            -B|--complet)
+                RESULT=$RESULT"B"
                 ;;
             -u|--update)
                 RESULT=$RESULT"u"
@@ -172,6 +179,7 @@ fi
 
 
 FLAG_h="no"
+FLAG_B="no"
 FLAG_u="no"
 FLAG_t="no"
 FLAG_n="no"
@@ -183,6 +191,13 @@ if [[ $1 ]]; then
             h)
                 if [[ $FLAG_h == "no" ]]; then
                     FLAG_h="yes"
+                else
+                    FLAG_h=$FLAG_h"yes"
+                fi
+                ;;
+            B)
+                if [[ $FLAG_B == "no" ]]; then
+                    FLAG_B="yes"
                 else
                     FLAG_h=$FLAG_h"yes"
                 fi
@@ -250,7 +265,11 @@ if [ -z "$DESCRIPTION" ]; then
         DESCRIPTION=$NAME
 fi
 
-copy_repo_classic
+if [[ $FLAG_B == "yes" ]]; then
+    copy_repo_complete
+else
+    copy_repo_classic
+fi
 
 #modif files & print end
 rewrite_files
