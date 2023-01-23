@@ -30,11 +30,6 @@ $(foreach rm_var, $1, \
 		printf "$(BRED)[$(RED)deleted$(BRED)] $(NO_COLOR)\
 		:$(RED) $(rm_var)$(NO_COLOR)\n";) \
 )
-$(foreach rm_var, $1, \
-		$(if $(wildcard ./src/$(rm_var)), ./src/$(rm_var) && \
-		printf "$(BRED)[$(RED)deleted$(BRED)] $(NO_COLOR)\
-		:$(RED) $(rm_var)$(NO_COLOR)\n";) \
-)
 endef
 
 define already_done
@@ -55,7 +50,7 @@ CPPFLAGS	=	-Wall -Wextra -Wpedantic -I./src
 RM_ARRAY	=	$(OBJ) *~ a.out *.gcno *.gcda unit_tests *\# \#*
 FRM_ARRAY	=	$(RM_ARRAY) $(COMPILATION)
 
-RM			:=	rm -rf
+RM			:=	rm -f
 
 RULE = $(filter-out $@,$(MAKECMDGOALS))
 
@@ -78,16 +73,16 @@ $(COMPILATION):	$(OBJ)
 all: $(COMPILATION)
 
 fclean:
-ifneq (,$(wildcard $(FRM_ARRAY)))
-	@$(call delete,$(FRM_ARRAY))
+ifneq (,$(wildcard $(FRM_ARRAY) $(addprefix ./src/,$(RM_ARRAY))))
+	@$(call delete,$(FRM_ARRAY) $(addprefix ./src/,$(RM_ARRAY)))
 else
 	@$(call already_done,$@)
 endif
 
 
 clean:
-ifneq (,$(wildcard $(RM_ARRAY)))
-	@$(call delete,$(RM_ARRAY))
+ifneq (,$(wildcard $(RM_ARRAY)  $(addprefix ./src/,$(RM_ARRAY))))
+	@$(call delete,$(RM_ARRAY) $(addprefix ./src/,$(RM_ARRAY)))
 else
 	@$(call already_done,$@)
 endif
