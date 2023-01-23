@@ -14,4 +14,4 @@ class $NAME {
     
     protected:
     private:
-}
+};

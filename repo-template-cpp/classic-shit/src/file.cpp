@@ -10,5 +10,10 @@
 $NAME::$NAME()
 {}
 
-~$NAME::$NAME()
+$NAME::~$NAME()
 {}
+
+int main(void)
+{
+    return 0;
+}
