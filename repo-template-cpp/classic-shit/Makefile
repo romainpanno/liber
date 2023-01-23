@@ -64,7 +64,7 @@ RULE = $(filter-out $@,$(MAKECMDGOALS))
 OBJ = $(SRC:.c=.o)
 
 $(COMPILATION):	$(OBJ)
-	@g++ -o $(COMPILATION) $(OBJ)
+	@g++ -c -o $(COMPILATION) $(OBJ)
 	@printf "\n$(BGREEN)$(COMPILATION)$(NO_COLOR)\
 	 -> $(BGREEN)created $(OK)$(NO_COLOR)\n"
 
