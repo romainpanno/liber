@@ -143,7 +143,7 @@ create_file() {
     fi
 }
 
-if [[ -f "./Makefile" ]] && [[ -d "./src/" ]] && [[ ! -z "$(grep -e "^SRC 	:=" Makefile)" ]] && [[ ! -z "$(grep -e "^SRC_TEST" Makefile)" ]]; then
+if [[ -f "./Makefile" ]] && [[ -d "./src/" ]] && [[ ! -z "$(grep -e "^SRC 	:=" Makefile)" ]]; then
     create_file "$1"
 else
     print_error
