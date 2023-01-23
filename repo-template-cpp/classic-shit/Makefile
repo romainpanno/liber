@@ -44,7 +44,7 @@ COMPILATION	=	$NAME
 SRC	:=	$NAME.cpp			\
 SRC	:= $(addprefix src/,$(SRC))
 
-CPPFLAGS	=	-std=gnu20 -Wall -Wextra -Wpedantic -I./src
+CPPFLAGS	=	-Wall -Wextra -Wpedantic -I./src
 
 
 RM_ARRAY	=	$(OBJ) *~ a.out *.gcno *.gcda unit_tests *\# \#*
@@ -53,6 +53,8 @@ FRM_ARRAY	=	$(RM_ARRAY) $(COMPILATION)
 RM			:=	rm -rf
 
 RULE = $(filter-out $@,$(MAKECMDGOALS))
+
+CC	=	g++
 
 # ---------------------------------------------------------------------
 
@@ -64,7 +66,7 @@ RULE = $(filter-out $@,$(MAKECMDGOALS))
 OBJ = $(SRC:.cpp=.o)
 
 $(COMPILATION):	$(OBJ)
-	@g++ -c -o $(COMPILATION) $(OBJ)
+	@$(CC) -c -o $(COMPILATION) $(OBJ)
 	@printf "\n$(BGREEN)$(COMPILATION)$(NO_COLOR)\
 	 -> $(BGREEN)created $(OK)$(NO_COLOR)\n"
 
