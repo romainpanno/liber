@@ -36,7 +36,7 @@ create_file() {
                 DESCRIPTION=$NAME
         fi
 
-        cp /usr/share/liber/file/cpp/* $BASEDIR/src/
+        cp /usr/share/liber/file/cpp/* $BASEDIR
         if [[ ! -f $BASEDIR/file.cpp || ! -f $BASEDIR/project.hpp ]]; then
             echo -en "$BIRed"
             echo -en "\nBad input retry with or bad file '-h' for help"
