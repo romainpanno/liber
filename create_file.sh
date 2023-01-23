@@ -142,8 +142,7 @@ create_file() {
         print_error
     fi
 }
-echo "je passe allezzz"
-if [[ -f "./Makefile" ]] && [[ -d "./src/" ]] && [[ ! -z "$(grep -e "^SRC   :=" Makefile)" ]]; then
+if [[ -f "./Makefile" ]] && [[ -d "./src/" ]] && [[ ! -z "$(grep -e "^SRC	:=" Makefile)" ]]; then
     echo "je passs"
     create_file "$1"
 else
