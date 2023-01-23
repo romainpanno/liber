@@ -23,7 +23,7 @@ print_error() {
 }
 
 create_file() {
-    if [[ $1 == "--cpp"]]; then
+    if [[ $1 == "--cpp" ]]; then
         echo -en "Enter your file name: $BBlue"
         read NAME
         echo -en "$Color_Off"
