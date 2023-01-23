@@ -61,7 +61,7 @@ RULE = $(filter-out $@,$(MAKECMDGOALS))
 	@printf "$(BBLUE)[$(BLUE)builded$(BBLUE)] \
 	$(NO_COLOR):$(BLUE) $@$(NO_COLOR)\n"
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 
 $(COMPILATION):	$(OBJ)
 	@g++ -c -o $(COMPILATION) $(OBJ)
