@@ -49,16 +49,16 @@ copy_repo_classic() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template-cpp/classic/* $BASEDIR
     cp /usr/share/liber/repo-template-cpp/classic/.gitignore $BASEDIR
-    mv ./src/project.hpp ./src/$NAME.hpp
-    mv ./src/file.cpp ./src/$NAME.cpp
+    mv project.hpp $NAME.hpp
+    mv file.cpp $NAME.cpp
 }
 
 copy_repo_complete() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template-cpp/classic-shit/* $BASEDIR
     cp /usr/share/liber/repo-template-cpp/classic-shit/.gitignore $BASEDIR
-    mv project.hpp $NAME.hpp
-    mv file.cpp $NAME.cpp
+    mv ./src/project.hpp ./src/$NAME.hpp
+    mv ./src/file.cpp ./src/$NAME.cpp
 }
 
 #--------------------------- Rewrite files --------------------------
