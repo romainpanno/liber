@@ -139,10 +139,12 @@ place_repository() {
         sudo rm -r /usr/local/bin/liber
     fi
     sudo cp -r liber/ /usr/share/
-    sudo mv /usr/share/liber/liber.sh /usr/local/bin/
-    sudo mv /usr/local/bin/liber.sh /usr/local/bin/liber
+    sudo mv /usr/share/liber/liber.sh /usr/local/bin/liber
+    sudo mv /usr/share/liber/cppliber.sh /usr/local/bin/cppliber
     sudo chmod +x /usr/local/bin/liber
+    sudo chmod +x /usr/local/bin/cppliber
     sudo rm -r /tmp/liber
+    sudo rm -r /tmp/cppliber
 }
 
 #------------------------- Print func -------------------------
