@@ -1,0 +1,26 @@
+.vscode/
+
+# Object
+*.o
+
+# Tests
+*gcno
+*gcda
+vgcore*
+
+# Useless
+*~
+*.tmp
+*.swo
+*.swp
+*.swa
+*.swn
+*.bak
+
+# Executable
+unit_tests
+a.out
+$NAME
+
+# Lib
+*.a

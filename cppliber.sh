@@ -50,6 +50,7 @@ copy_repo_classic() {
     cp -r /usr/share/liber/repo-template-cpp/classic/* $BASEDIR
     cp /usr/share/liber/repo-template-cpp/classic/.gitignore $BASEDIR
     mv project.hpp $NAME.hpp
+    mv file.cpp $NAME.cpp
     cp -r $LIB $BASEDIR
 }
 
