@@ -49,7 +49,7 @@ copy_repo_classic() {
     NAME=$(echo "$NAME" |  tr '[:upper:]' '[:lower:]' )
     cp -r /usr/share/liber/repo-template-cpp/classic/* $BASEDIR
     cp /usr/share/liber/repo-template-cpp/classic/.gitignore $BASEDIR
-    mv include/project.hpp include/$NAME.hpp
+    mv project.hpp $NAME.hpp
     cp -r $LIB $BASEDIR
 }
 

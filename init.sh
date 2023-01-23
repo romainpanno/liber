@@ -132,6 +132,7 @@ set_no_lib() {
 place_repository() {
     cd /tmp/
     git clone "https://github.com/romainpanno/liber"
+    cd ./liber && git switch dev && cd ..
     if [ -d /usr/share/liber ]; then
         sudo rm -r /usr/share/liber
     fi
@@ -144,7 +145,6 @@ place_repository() {
     sudo chmod +x /usr/local/bin/liber
     sudo chmod +x /usr/local/bin/cppliber
     sudo rm -r /tmp/liber
-    sudo rm -r /tmp/cppliber
 }
 
 #------------------------- Print func -------------------------
