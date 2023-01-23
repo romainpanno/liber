@@ -37,7 +37,7 @@ create_file() {
         fi
 
         cp /usr/share/liber/file/cpp/* $BASEDIR/src/
-        if [[ ! -f $BASEDIR/file.cpp || ! -f $BASEDIR/file.hpp ]]; then
+        if [[ ! -f $BASEDIR/file.cpp || ! -f $BASEDIR/project.hpp ]]; then
             echo -en "$BIRed"
             echo -en "\nBad input retry with or bad file '-h' for help"
             echo -e "$Color_Off"
